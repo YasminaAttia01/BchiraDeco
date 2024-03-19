@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import APropos from "./components/aPropos/APropos";
 import Achteurs from "./components/achteurs/Achteurs";
 import Vendeurs from "./components/vendeurs/Vendeurs";
+import Consultez from "./components/consultez/Consultez";
 
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -15,6 +16,7 @@ function App() {
       <APropos />
       <Achteurs/>
       <Vendeurs/>
+      <Consultez/>
     </div>
   );
 }

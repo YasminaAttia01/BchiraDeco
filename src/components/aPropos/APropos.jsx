@@ -1,8 +1,8 @@
 import "./aPropos.scss"
-import image1 from "../../assets/aPropos1.jfif";
-import image2 from "../../assets/aPropos2.jfif";
-import image3 from "../../assets/aPropos3.jpg";
-import image4 from "../../assets/aPropos4.jpg";
+import image1 from "../../assets/aPropos1.webp";
+import image2 from "../../assets/aPropos2.webp";
+import image3 from "../../assets/aPropos3.webp";
+import image4 from "../../assets/aPropos4.webp";
 import {motion, useAnimation, useInView} from "framer-motion"
 import { image1Anim,image2Anim,image3Anim,image4Anim,anim } from "./animation";
 import { useEffect, useRef } from "react";

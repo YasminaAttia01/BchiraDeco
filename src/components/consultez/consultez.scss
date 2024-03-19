@@ -1,0 +1,39 @@
+@use "../../assets/variables" as *;
+.consultez-container{
+
+    .text{
+        font-size: 2rem;
+        font-weight: 500;
+        width: fit-content;
+        margin: auto;
+        margin-bottom: 30px;
+        &::after{
+            content: "";
+            display: block;
+            width: 50%;
+            height: 5px;
+            background-color: $yellow;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+    }
+    .icons{
+        height: 25vh;
+        min-height: 80px;
+        width: 100%;
+        position: relative;
+        box-shadow: 5px 0 10px  #00000041;
+        background-color: $background;
+        @include flex(20px);
+        padding: 5px 50px;
+        align-items: center;
+        svg{
+            border-radius: 5px;
+            flex: 1;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            background-color: #0000001c;
+        }
+    }
+}

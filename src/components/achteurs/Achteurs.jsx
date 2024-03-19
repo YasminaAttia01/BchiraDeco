@@ -11,7 +11,7 @@ function Achteurs() {
       ),
       title: "Navigation",
       text: "Parcourez les différents articles disponibles.",
-      background: "red",
+      background: "rgba(221, 227, 219, 1)",
     },
     {
       icon: (
@@ -27,7 +27,7 @@ function Achteurs() {
       ),
       title: "Contact via Facebook",
       text: "Envoyez une capture d'écran de l'article via notre page Facebook pour passer commande.",
-      background: "blue",
+      background: "rgba(255, 243, 183, 1)",
     },
     {
       icon: (
@@ -37,7 +37,7 @@ function Achteurs() {
       ),
       title: "Sélection du vêtement",
       text: "Trouvez un vêtement que vous souhaitez acheter.",
-      background: "red",
+      background: " rgba(255, 243, 183, 1)",
     },
     {
       icon: (
@@ -47,7 +47,7 @@ function Achteurs() {
       ),
       title: "Confirmation de la commande",
       text: "Si le produit est disponible, nous confirmerons votre commande.",
-      background: "blue",
+      background: "rgba(221, 227, 219, 1)",
     },
     {
       icon: (
@@ -57,7 +57,7 @@ function Achteurs() {
       ),
       title: "Capture d'écran",
       text: "Prenez une capture d'écran de l'article choisi.",
-      background: "blue",
+      background: "rgba(221, 227, 219, 1)",
     },
     {
       icon: (
@@ -67,7 +67,7 @@ function Achteurs() {
       ),
       title: "Paiement et livraison",
       text: "Prenez une capture d'écran de l'article choisi. Lors de la livraison, vous devrez effectuer le paiement au livreur.",
-      background: "blue",
+      background: "rgba(255, 243, 183, 1)",
     },
   ];
   return (

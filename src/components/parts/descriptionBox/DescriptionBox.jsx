@@ -15,6 +15,6 @@ function DescriptionBox({icon, title,text, background}) {
       </div>
     </div>
   );
-}
+} 
 
 export default DescriptionBox;

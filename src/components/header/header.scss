@@ -1,9 +1,9 @@
 @use "../../assets/variables" as *;
 .header-container {
     width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $background;
-  background: url(../../assets/backgroundHeader.jfif) no-repeat center;
+  background: url(../../assets/backgroundHeader.webp) no-repeat center;
   background-attachment: fixed;
   object-fit: cover;
   background-size: cover;
