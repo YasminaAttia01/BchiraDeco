@@ -10,20 +10,19 @@
   padding: 5%;
   .aPropos-text {
     flex: 1;
-    display: flex;
+    @include flex(30px);
     height: 100%;
     flex-direction: column;
-    justify-content: space-evenly;
     h2 {
       text-decoration: underline;
       font-weight: 400;
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
     h3 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
     p {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       background-color: rgba(238, 198, 96, 1);
       font-weight: 300;
       padding: 20px 30px;
@@ -71,6 +70,23 @@
       left: 50%;
       transform: translate(-50%, -49%);
       z-index: -1;
+    }
+    .aPropos-text{
+      h2 {
+        text-decoration: underline;
+        font-weight: 400;
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.4rem;
+      }
+      p {
+        font-size: 1.2rem;
+        background-color: rgba(238, 198, 96, 1);
+        font-weight: 300;
+        padding: 20px 30px;
+        line-height: 35px;
+      }
     }
   }
 }
