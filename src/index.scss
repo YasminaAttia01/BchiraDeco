@@ -1,0 +1,12 @@
+@use "./assets/variables"as *;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+body{
+  max-width: 100vw !important;
+  overflow-x: hidden !important; 
+  background-color: $background
+}

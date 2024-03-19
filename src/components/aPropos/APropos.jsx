@@ -1,0 +1,44 @@
+import "./aPropos.scss"
+import image1 from "../../assets/aPropos1.jfif";
+import image2 from "../../assets/aPropos2.jfif";
+import image3 from "../../assets/aPropos3.jpg";
+import image4 from "../../assets/aPropos4.jpg";
+import {motion, useAnimation, useInView} from "framer-motion"
+import { image1Anim,image2Anim,image3Anim,image4Anim,anim } from "./animation";
+import { useEffect, useRef } from "react";
+
+function APropos() {
+    const ref = useRef(null);
+    const isInView = useInView(ref);
+  
+  return (
+    <div className="aPropos-container">
+      <div className="aPropos-images">
+        <div className="first">
+          <motion.img style={{height:"44%" }} {...anim(image1Anim)}   src={image1} alt="" />
+          <motion.img style={{height:"55%"}}  {...anim(image2Anim)}  src={image3} alt="" />
+        </div>
+
+        <div className="second">
+          <motion.img style={{height:"36%"}} {...anim(image3Anim)} src={image2} alt="" />
+          <motion.img style={{height:"63%"}} {...anim(image4Anim)} src={image4} alt="" />
+        </div>
+      </div>
+      <span ref={ref}></span>
+      <div className="aPropos-text">
+        <h2>À propos de nous</h2>
+        <h3>
+          Nous proposons des vêtements de<br/> qualité à des prix abordables et prêts
+          à<br/> être livrés.
+        </h3>
+        <p>
+          Nous servons d'intermédiaire entre les<br/> vendeurs de vêtements et les
+          acheteurs <br/> à la recherche de vêtements à des prix<br/> raisonnables sur
+          notre site web.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default APropos;

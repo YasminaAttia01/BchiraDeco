@@ -1,0 +1,9 @@
+@mixin flex($gap){
+    display: flex;
+    gap:$gap
+};
+$background:rgb(255, 255, 235);
+$white:white;
+$black:black;
+$gray:gray;
+$yellow:yellow

@@ -1,0 +1,89 @@
+import "./header.scss";
+import { motion } from "framer-motion";
+import { banner, letterAni, text, anim } from "./animation";
+
+function Header() {
+  return (
+    <motion.div variants={banner} className="header-container">
+      <motion.div className="background" />
+      <motion.h2 {...anim(banner)}>
+        <p>
+          {[...text.style].map((letter, i) => (
+            <motion.span key={i} variants={letterAni}>
+              <mark> {letter}</mark>
+            </motion.span>
+          ))}
+        </p>
+        &nbsp;
+        <p>
+          {[...text.sans].map((letter, i) => (
+            <motion.span key={i} variants={letterAni}>
+              {letter}
+            </motion.span>
+          ))}
+        </p>
+        &nbsp;
+        <p>
+          {[...text.frontieres].map((letter, i) => (
+            <motion.span key={i} variants={letterAni}>
+              {letter}
+            </motion.span>
+          ))}
+        </p>
+        <br />
+        
+        <p>
+          {[...text.pour].map((letter, i) => (
+            <motion.span key={i} variants={letterAni}>
+              {letter}
+            </motion.span>
+          ))}
+        </p>
+        &nbsp;
+        <p>
+          {[...text.chaque].map((letter, i) => (
+            <motion.span key={i} variants={letterAni}>
+              {letter}
+            </motion.span>
+          ))}
+        </p>
+        &nbsp;
+        <p>
+          {[...text.moument].map((letter, i) => (
+            <motion.span key={i} variants={letterAni}>
+              {letter}
+            </motion.span>
+          ))}
+        </p>
+        <br />
+          <p>
+            {[...text.de].map((letter, i) => (
+              <motion.span key={i} variants={letterAni}>
+                {letter}
+              </motion.span>
+            ))}
+          </p>
+        &nbsp;
+    
+          <p>
+            {[...text.votre].map((letter, i) => (
+              <motion.span key={i} variants={letterAni}>
+                <mark> {letter}</mark>
+              </motion.span>
+            ))}
+          </p>
+        &nbsp;
+    
+        <p>
+          {[...text.vie].map((letter, i) => (
+            <motion.span key={i} variants={letterAni}>
+              <mark> {letter}</mark>
+            </motion.span>
+          ))}
+        </p>
+      </motion.h2>
+    </motion.div>
+  );
+}
+
+export default Header;

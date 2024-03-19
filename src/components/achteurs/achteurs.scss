@@ -1,0 +1,22 @@
+@use "../../assets/variables" as *;
+.achteurs-container,.vendeurs-container{
+    position: relative;
+    margin: 4%;
+    box-shadow: 5px 5px 20px  #00000034;
+    background-color: $background;
+    padding: 3%;
+    h3{
+        font-size: 3rem;
+        font-weight: 300;
+        text-decoration: underline;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .icons{
+       @include flex(20px);
+        justify-content: space-around;
+        flex-wrap: wrap;
+        position: relative;
+
+    }
+}

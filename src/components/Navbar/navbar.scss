@@ -1,0 +1,63 @@
+@use "_animations.scss";
+@use "_navbarMediaQueries.scss";
+@use "../../assets/variables" as *;
+
+.navbar-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  padding: 1rem;
+  z-index: 2;
+  background-color: $background;
+  border-bottom: 1px solid rgba(110, 110, 110, 0.301);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.219);
+  img {
+    height: inherit;
+  }
+  nav {
+    ul {
+      display: flex;
+      list-style-type: none;
+      gap: 2rem;
+      color: $white;
+      font-variant: small-caps;
+      font-weight: 600;
+      li {
+        position: relative;
+        letter-spacing: 0.2em;
+        margin: 0 auto;
+        padding: 10px 30px;
+        background: transparent;
+        outline: none;
+        font-size: 20px;
+        color: #000;
+        text-decoration: none;
+        text-transform: uppercase;
+        &:before, &:after {
+          left: 0;
+          width: 100%;
+          height: 5%;
+          background: rgba(110, 110, 110, 0.445);
+          content: "";
+          position: absolute;
+          transition: 0.35s;
+          z-index: -1;
+        }
+        &::before {
+          top: 0;
+        }
+        &::after {
+          bottom: 0;
+        }
+        &:hover::before, &:hover::after {
+          height: 100%;
+        }
+       
+      }
+    }
+  }
+}
