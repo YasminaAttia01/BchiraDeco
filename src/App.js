@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./app.scss";
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/header/Header";
@@ -13,19 +13,19 @@ import Products from "./components/products/Products";
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [loading, setLoading] = useState(true);
-  // useEffect(()=>{
-  //   const timer = setTimeout(()=>{
-  //     setLoading(false)
-  //   },2000)
-  //   return () => {
-  //     clearTimeout(timer)
-  //   }
-  // },[])
+  useEffect(()=>{
+    const timer = setTimeout(()=>{
+      setLoading(false)
+    },2900)
+    return () => {
+      clearTimeout(timer)
+    }
+  },[])
   return (
     <div className="App">
       <AnimatePresence mode="wait">
         {loading ? (
-          <Loader setLoading={setLoading} />
+          <Loader />
         ) : (
           <motion.div key="transition">
             <Navbar open={openNavbar} setOpen={setOpenNavbar} />

@@ -48,7 +48,7 @@ const itemMain = {
   },
 };
 
-const Loader = ({ setLoading }) => {
+const Loader = () => {
   return (
     <motion.div className="loader" layoutTransition >
       <motion.div         key="animation"
@@ -57,7 +57,6 @@ const Loader = ({ setLoading }) => {
         layoutTransition
         animate="show"
         exit="exit"
-        onAnimationComplete={() => setLoading(false)}
         className="loader-inner"
       >
    

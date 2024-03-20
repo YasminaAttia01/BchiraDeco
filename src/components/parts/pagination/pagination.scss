@@ -10,15 +10,21 @@
     margin: 0 5px;
     .page-link {
       display: flex;
+      cursor: pointer;
       justify-content: center;
       align-items: center;
       width: 40px;
       height: 40px;
       border-radius: 5px;
       background-color: $background;
-      color: $white;
+      color: $black;
       text-decoration: none;
       font-size: 1.2rem;
+      border: 2px solid black;
+    
+    &:active{
+      color: $yellow;
     }
+  }
   }
 }
