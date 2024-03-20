@@ -11,7 +11,14 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [loading, setLoading] = useState(true)
-
+useEffect(()=>{
+  const timer = setTimeout(()=>{
+    setLoading(false)
+  },2000)
+  return () => {
+    clearTimeout(timer)
+  }
+},[])
   return (
     <div className="App">
       {/* <Loader/> */}

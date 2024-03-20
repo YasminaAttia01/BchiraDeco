@@ -20,10 +20,10 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 200 },
   show: {
-    opacity: 0.3,
-    y: 0,
+    opacity: 0.6,
+    y: -200,
     transition: {
-      duration: 1.6,
+      duration: 3,
     },
   },
   exit: {
@@ -52,7 +52,6 @@ const Loader = ({ setLoading }) => {
     <motion.div className="loader">
       <motion.div
         variants={container}
-        onAnimationComplete={() => setLoading(false)}
         initial="hidden"
         animate="show"
         exit="exit"
