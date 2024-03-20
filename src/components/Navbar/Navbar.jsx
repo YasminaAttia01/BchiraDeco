@@ -12,9 +12,9 @@ function Navbar({ open, setOpen }) {
           <div className={open ? "bar open" : "bar"}></div>
         </div>
         <ul className={open ? "ulopen" : "ulclosed"}>
-          <li>&nbsp; Home &nbsp;</li>
-          <li>&nbsp;About&nbsp;</li>
-          <li>&nbsp;Contact&nbsp;</li>
+          <li data-hover="Home">&nbsp; Home &nbsp;</li>
+          <li data-hover="About">&nbsp;About&nbsp;</li>
+          <li   data-hover="Contact">&nbsp;Contact&nbsp;</li>
         </ul>
       </nav>
     </div>

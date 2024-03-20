@@ -3,7 +3,7 @@
     width: 100%;
   min-height: 100vh;
   background-color: $background;
-  background: url(../../assets/backgroundHeader.webp) no-repeat center;
+  // background: url(../../assets/backgroundHeader.webp) no-repeat center;
   background-attachment: fixed;
   object-fit: cover;
   background-size: cover;
@@ -11,12 +11,20 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  .background{
+  .backgroundImage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    height: 100%;
+  }
+  .backgroundFilter{
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 0;
+      z-index: 1;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.37);
     }
@@ -28,7 +36,7 @@
     letter-spacing: 4px;
     line-height: 90px;
     mark {
-      background-color: rgba(255, 255, 0, 0.678);
+      background-color: $yellow;
     }
     span{
         position: relative;

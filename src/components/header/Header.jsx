@@ -1,11 +1,13 @@
 import "./header.scss";
 import { motion } from "framer-motion";
+import image from "../../assets/backgroundHeader.webp";
 import { banner, letterAni, text, anim } from "./animation";
 
 function Header() {
   return (
     <motion.div variants={banner} className="header-container">
-      <motion.div className="background" />
+      <motion.div className="backgroundFilter" />
+      <motion.img src={image} alt=""  layoutId='main-image-1' className="backgroundImage"/>
       <motion.h2 {...anim(banner)}>
         <p>
           {[...text.style].map((letter, i) => (

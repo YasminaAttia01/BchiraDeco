@@ -27,37 +27,30 @@
       font-variant: small-caps;
       font-weight: 600;
       li {
+       cursor: pointer;
+        color: $black;
+        text-shadow: none;
         position: relative;
-        letter-spacing: 0.2em;
-        margin: 0 auto;
-        padding: 10px 30px;
-        background: transparent;
-        outline: none;
-        font-size: 20px;
-        color: #000;
-        text-decoration: none;
-        text-transform: uppercase;
-        &:before, &:after {
-          left: 0;
-          width: 100%;
-          height: 5%;
-          background: rgba(110, 110, 110, 0.445);
-          content: "";
-          position: absolute;
-          transition: 0.35s;
-          z-index: -1;
-        }
         &::before {
-          top: 0;
-        }
-        &::after {
+          position: absolute;
+          width: 100%;
+          height: 3px;
           bottom: 0;
+          left: 0;
+          overflow: hidden;
+          background-color: $yellow;
+          content: "";
+          transition: all 0.3s ease-out;
+         
+          opacity: 1;
+          
         }
-        &:hover::before, &:hover::after {
-          height: 100%;
-        }
-       
-      }
-    }
+        &:hover{
+          &::before{
+                    height: 100%;
+
+            opacity: 0.3;
+          }
+        }}}
   }
 }
