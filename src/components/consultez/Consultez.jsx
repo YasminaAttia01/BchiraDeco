@@ -1,18 +1,18 @@
 import "./consultez.scss";
 
-function Consultez() {
+function Consultez({setCategory,category}) {
   return (
     <div className="consultez-container">
       <div className="text">CONSULTEZ NOS DERNIERS PRODUITS</div>
       <div className="icons">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <svg onClick={()=>setCategory("all")} className={category==="all"?"active":null} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
           <path
             d="M54.41 4H9.59A5.59 5.59 0 0 0 4 9.59v44.82A5.59 5.59 0 0 0 9.59 60h44.82A5.59 5.59 0 0 0 60 54.41V9.59A5.59 5.59 0 0 0 54.41 4zM22 50a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm16 16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm16 16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4z"
             style={{fill:"#0072ff"}}
             data-name="Layer 2"
           />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+        <svg onClick={()=>setCategory("t-shirt")} className={category==="t-shirt"?"active":null}  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
           <path
             d="M159.634 10.558c.31 22.219 26.444 35.405 44.751 22.715a69.082 69.082 0 0 0 17.172-17.108l16.286 21.494s-5.664 63.159-5.947 64.292S120.3 120.142 120.3 120.142s-9.347-60.675-9.347-64.074 13.033-31.438 13.033-31.438z"
             style={{ fill: "#7b8bba" }}
@@ -34,7 +34,7 @@ function Consultez() {
             style={{ fill: "#3f3f70" }}
           />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" onClick={() => setCategory("pents")} className={category === "pents" ? "active" : null}>
           <path
             d="M101.491 12.175S166.4 6.31 242.827 13.8l-9.251 35.274-86.757 21.689L107.385 28.3z"
             style={{ fill: "#7b8bba" }}
@@ -56,7 +56,7 @@ function Consultez() {
             style={{ fill: "#3f3f70" }}
           />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" onClick={() => setCategory("dress")} className={category === "dress" ? "active" : null}>
           <path
             d="M217.892 144.091s16.138 84.144 33.547 126.167a13.522 13.522 0 0 1-4.268 15.955 58.026 58.026 0 0 1-19.292 10s-17.685-108.624-9.987-152.122z"
             style={{ fill: "#7b8bba" }}
@@ -94,7 +94,7 @@ function Consultez() {
             style={{ fill: "#3f3f70" }}
           />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" onClick={() => setCategory('shoes')} className={category === 'shoes' ? 'active' : null }>
           <path
             d="M3 45c0-5.5 4.5-10 10-10h7v8h41v6H3v-4z"
             style={{ fill: "#fff" }}
@@ -112,7 +112,7 @@ function Consultez() {
             style={{ fill: "#314a52" }}
           />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" onClick={() => setCategory('bags')} className={category === 'bags' ? 'active' : null }>
           <path
             d="M182.96 10c-39.4 0-73.491 32.05-73.491 71.445v74.728c0 4.161 5.419 7.534 9.58 7.534a7.534 7.534 0 0 0 7.533-7.534V81.445a56.442 56.442 0 0 1 56.378-56.378c31.086 0 54.331 25.291 54.331 56.378v74.728c0 4.161 5.419 7.534 9.58 7.534a7.534 7.534 0 0 0 7.534-7.534V81.445A71.526 71.526 0 0 0 182.96 10z"
             style={{ fill: "#7b8bba" }}

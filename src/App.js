@@ -12,6 +12,7 @@ import Products from "./components/products/Products";
 
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
+  const [category, setCategory] = useState("all");
   const [loading, setLoading] = useState(true);
   useEffect(()=>{
     const timer = setTimeout(()=>{
@@ -34,8 +35,8 @@ function App() {
               <APropos />
               <Achteurs />
               <Vendeurs />
-              <Consultez />
-              <Products/>
+              <Consultez  setCategory={setCategory} category={category}/>
+              <Products category ={category}/>
             </div>
           </motion.div>
         )}

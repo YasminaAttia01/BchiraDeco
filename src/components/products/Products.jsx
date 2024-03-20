@@ -1,23 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./products.scss";
 import axios from "axios";
 import Pagination from "../parts/pagination/Pagination";
+import { ProductStore } from "../../context/ProductsContext";
 
-function Products() {
-    const [posts, setPosts] = useState([]);
+function Products({category}) {
+
+  const products=useContext(ProductStore)
+    const [posts, setPosts] = useState(products);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(9);
-  console.log(posts);
+ 
+   
     useEffect(() => {
-      const fetchPosts = async () => {
-        setLoading(true);
-        const res = await axios.get('https://fakestoreapi.com/products');
-        setPosts(res.data);
-        setLoading(false);
-      };
-      fetchPosts();
-    }, []);
+      setPosts(products.filter((post) =>category==="all"?true: post.category === category));
+    }, [category]);
   
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
