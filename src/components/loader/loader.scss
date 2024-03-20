@@ -1,45 +1,58 @@
 .loader {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
     position: relative;
+    overflow: hidden;
     .loader-inner {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        position: relative;
+        overflow: hidden;
+
         img{
             position: absolute;
             object-fit: cover;
             min-width: 100px;
         }
+        
       .main-image{
-        width: 50%;
-        opacity: 1;
-        top: 20%;
-        left: 20%;
-        z-index: 1;
-        min-width: 400px;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 80%
+        ;
+        height: 80%;
+        z-index: 0;
+        object-fit: cover;
+      
 
       }
+    
       .image1{
-        width: 15%;
+        width: 25%;
         top: 10%;
         right: 20%;
         z-index: 2;
         opacity: 0.2;
       }
       .image2{
-        width: 10%;
+        width: 20%;
         top: 70%;
         left: 10%;
         z-index: 2;
         opacity: 0.2;
       }
       .image3{
-        width: 10%;
+        width: 20%;
         top: 80%;
         right: 20%;
         opacity: 0.2;
         z-index: 2;
       }
       .image4{
-        width: 5%;
+        width: 15%;
         top: 5%;
         left: 20%;
         opacity: 0.2;

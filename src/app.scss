@@ -1,0 +1,8 @@
+@use "./assets/variables"as *;
+.container{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+    background-color: $background;
+}

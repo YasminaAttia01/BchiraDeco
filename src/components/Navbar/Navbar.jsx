@@ -1,23 +1,26 @@
 // import logo from "../../assets/logo.png"
+import { anim, banner, objectAni } from "./animation";
 import "./navbar.scss";
+import {motion} from "framer-motion"
 function Navbar({ open, setOpen }) {
 
+
   return (
-    <div className="navbar-container">
+    <motion.div className="navbar-container" {...anim(banner)} >
     
       {/* <img src={logo} alt="logo" /> */}
-      <h2>logo</h2>
+      <motion.h2 variants={objectAni}>logo</motion.h2>
       <nav onClick={() => setOpen(!open)}>
         <div className={open ? "hamburger-menu open" : "hamburger-menu"}>
           <div className={open ? "bar open" : "bar"}></div>
         </div>
-        <ul className={open ? "ulopen" : "ulclosed"}>
-          <li data-hover="Home">&nbsp; Home &nbsp;</li>
-          <li data-hover="About">&nbsp;About&nbsp;</li>
-          <li   data-hover="Contact">&nbsp;Contact&nbsp;</li>
+        <ul className={open ? "ulopen" : "ulclosed"} >
+          <motion.li variants={objectAni} data-hover="Home">&nbsp; Home &nbsp;</motion.li>
+          <motion.li variants={objectAni} data-hover="About">&nbsp;About&nbsp;</motion.li>
+          <motion.li variants={objectAni}   data-hover="Contact">&nbsp;Contact&nbsp;</motion.li>
         </ul>
       </nav>
-    </div>
+    </motion.div>
   );
 }
 

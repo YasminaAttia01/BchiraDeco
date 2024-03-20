@@ -1,5 +1,5 @@
 import "./loader.scss";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import Image from "../../assets/backgroundHeader.webp";
 import image1 from "../../assets/aPropos1.webp";
@@ -23,7 +23,8 @@ const item = {
     opacity: 0.6,
     y: -200,
     transition: {
-      duration: 3,
+      duration: 2,
+      ease: "easeInOut",
     },
   },
   exit: {
@@ -40,37 +41,41 @@ const itemMain = {
   hidden: { opacity: 0, y: 200 },
   show: {
     opacity: 1,
-    y: 0,
+    y: -20,
     transition: {
-      duration: 1.6,
+      duration: 2,
     },
   },
 };
 
 const Loader = ({ setLoading }) => {
   return (
-    <motion.div className="loader">
-      <motion.div
+    <motion.div className="loader" layoutTransition >
+      <motion.div         key="animation"
         variants={container}
         initial="hidden"
+        layoutTransition
         animate="show"
         exit="exit"
+        onAnimationComplete={() => setLoading(false)}
         className="loader-inner"
       >
-        
-     
-          <motion.img variants={itemMain} initial='hidden' animate='show'
+   
+          <motion.img layoutTransition 
+            variants={itemMain}
+            initial="hidden"
+            animate="show"
             layoutId="main-image-1"
             src={Image}
             className="main-image"
             alt=""
           />
-    
-        <motion.img src={image1} className="image1" variants={item} alt=""/>
-        <motion.img src={image2} className="image2" variants={item} alt=""/>
-        <motion.img src={image3} className="image3" variants={item} alt=""/>
-        <motion.img src={image4} className="image4" variants={item} alt=""/>
+   
 
+        <motion.img src={image1} className="image1" variants={item} alt="" />
+        <motion.img src={image2} className="image2" variants={item} alt="" />
+        <motion.img src={image3} className="image3" variants={item} alt="" />
+        <motion.img src={image4} className="image4" variants={item} alt="" />
       </motion.div>
     </motion.div>
   );

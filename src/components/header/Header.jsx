@@ -5,9 +5,9 @@ import { banner, letterAni, text, anim } from "./animation";
 
 function Header() {
   return (
-    <motion.div variants={banner} className="header-container">
+    <motion.div variants={banner} className="header-container" layoutTransition >
       <motion.div className="backgroundFilter" />
-      <motion.img src={image} alt=""  layoutId='main-image-1' className="backgroundImage"/>
+      <motion.img src={image} alt=""   layoutId='main-image-1' className="backgroundImage" layoutTransition />
       <motion.h2 {...anim(banner)}>
         <p>
           {[...text.style].map((letter, i) => (
