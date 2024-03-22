@@ -3,7 +3,7 @@
 @use "../../assets/variables" as *;
 
 .navbar-container {
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
   overflow: hidden;
@@ -12,7 +12,7 @@
   align-items: center;
   height: 60px;
   padding: 1rem;
-  z-index: 2;
+  z-index: 2000;
   background-color: $background;
   border-bottom: 1px solid rgba(110, 110, 110, 0.301);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.219);

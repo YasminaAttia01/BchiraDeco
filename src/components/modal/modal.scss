@@ -1,0 +1,91 @@
+@use "../../assets/variables" as *;
+
+.modal-container {
+    svg{
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 2000000000000000000;
+        color: $white;
+    }
+  position: fixed;
+  height: 100vh;
+  max-height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2000000000000000000;
+  width: 100%;
+  padding: 5%;
+  background-color: rgba(0, 0, 0, 0.425);
+  .modal {
+    position: relative;
+    top: 8vh;
+    width: 100%;
+    height: 85vh;
+    max-height: 100vh;
+    padding: 5%;
+    background-color: white;
+    @include flex(20px);
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 50px;
+    }
+    .images {
+      flex: 1;
+      @include flex(10px);
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      height: 100%;
+
+      @media screen and (max-width: 600px) {
+        height: 50%;
+
+      }
+      position: relative;
+ 
+      & > img {
+        object-fit: cover;
+        height: 90%;
+        width: 90%;
+    
+       
+      }
+      .small-images {
+        height: 20%;
+        @include flex(10px);
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .description {
+      width: 100%;
+      flex: 1;
+      @include flex(30px);
+      flex-direction: column;
+      height: 100%;
+      .colors{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: black;
+      }
+      div {
+        line-height: 40px;
+      }
+      @media screen and (max-width: 600px) {
+        height: 30%;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

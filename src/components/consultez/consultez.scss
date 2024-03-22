@@ -18,22 +18,28 @@
         }
     }
     .icons{
-        height: 25vh;
+        height: 120px;
         min-height: 80px;
         width: 100%;
         position: relative;
         box-shadow: 5px 0 10px  #00000041;
         background-color: $background;
-        @include flex(20px);
+        @include flex(10px);
+        justify-content: space-around;
         padding: 5px 50px;
         align-items: center;
         margin:  20px 0;
+        @media (max-width: 600px) {
+            padding: 5px 0px;
+            height: 70px;
+            
+        }
         svg{
             border-radius: 5px;
             flex: 1;
             height: 100%;
             width: 100%;
-            padding: 20px;
+            padding: 2px;
             border: 1px solid rgba(0, 0, 0, 0.274);
         }
         .active{

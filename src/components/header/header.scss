@@ -1,7 +1,8 @@
 @use "../../assets/variables" as *;
 .header-container {
     width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
+
   background-color: $background;
   // background: url(../../assets/backgroundHeader.webp) no-repeat center;
   background-attachment: fixed;
@@ -16,9 +17,9 @@
 
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 0;
     height: 100%;
+    width: 100%;
     object-fit: cover;
   }
   .backgroundFilter{
@@ -32,11 +33,35 @@
     }
   h2 {
       z-index: 1;
+      width: 60%;
     font-weight: 300;
     color: $white;
     font-size: 3.5rem;
     letter-spacing: 4px;
     line-height: 90px;
+
+    @media (max-width: 1100px) {
+      width: 70%;
+      font-size: 2.8rem;
+    }
+    @media (max-width: 900px) {
+      width: 80%;
+      font-size: 2.6rem;
+    }
+    @media (max-width: 770px) {
+      width: 90%;
+      font-size: 2rem;
+      letter-spacing: 4px;
+      line-height: 60px;
+  }
+  @media (min-height: 800px) {
+    width: 90%;
+    line-height: 75px;
+  }
+  @media (min-height: 1000px) {
+    width: 90%;
+    line-height: 80px;
+  }
     mark {
       background-color: $yellow;
     }
@@ -55,14 +80,3 @@
 };
 
 
-@media (max-width: 600px) {
-    .header-container {
-      h2 {
-    
-        font-size: 3rem;
-        letter-spacing: 4px;
-        line-height: 90px;
-       
-      }
-    }
-    }

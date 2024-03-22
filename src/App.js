@@ -9,11 +9,14 @@ import Consultez from "./components/consultez/Consultez";
 import Loader from "./components/loader/Loader";
 import { AnimatePresence, motion } from "framer-motion";
 import Products from "./components/products/Products";
+import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
+import Modal from "./components/modal/Modal";
 
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [category, setCategory] = useState("all");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(()=>{
     const timer = setTimeout(()=>{
       setLoading(false)
@@ -30,13 +33,16 @@ function App() {
         ) : (
           <motion.div key="transition">
             <Navbar open={openNavbar} setOpen={setOpenNavbar} />
-            <Header />
-            <div className="container">
+            <Header setOpenNavbar={setOpenNavbar} />
+            <div className="container" onClick={() => setOpenNavbar(false)} >
               <APropos />
               <Achteurs />
               <Vendeurs />
-              <Consultez  setCategory={setCategory} category={category}/>
+              <Consultez category={category} setCategory={setCategory} />
               <Products category ={category}/>
+
+              <Contact/>
+              <Footer/>
             </div>
           </motion.div>
         )}

@@ -43,7 +43,8 @@ const itemMain = {
     opacity: 1,
     y: -20,
     transition: {
-      duration: 2,
+      duration: 1,
+      delay:1.5
     },
   },
 };

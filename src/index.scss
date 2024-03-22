@@ -4,9 +4,27 @@
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
+  scroll-behavior: smooth;
+
 }
-body{
-  max-width: 100% !important;
-  overflow-x: hidden !important; 
-  background-color: $background
+
+
+html{
+  font-size: 16px;
+  @media (min-height: 800px) {
+  
+    font-size: 20px;
+  }
+  @media (min-height: 1000px) {
+  
+    font-size: 26px;
+  }
+}
+button{
+  background-color: rgba(80, 65, 188, 1);
+  float: right;
+  width: 130px;
+  height: 40px;
+  color: white;
+  font-weight: 700;
 }

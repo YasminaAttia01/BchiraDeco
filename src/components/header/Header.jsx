@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import image from "../../assets/backgroundHeader.webp";
 import { banner, letterAni, text, anim } from "./animation";
 
-function Header() {
+function Header( {setOpenNavbar}) {
   return (
-    <motion.div variants={banner} className="header-container" layoutTransition >
+    <motion.div variants={banner} className="header-container" layoutTransition  onClick={() => setOpenNavbar(false)}>
       <motion.div className="backgroundFilter" />
       <motion.img src={image} alt=""   layoutId='main-image-1' className="backgroundImage" layoutTransition />
       <motion.h2 {...anim(banner)}>
@@ -32,7 +32,7 @@ function Header() {
             </motion.span>
           ))}
         </p>
-        <br />
+        &nbsp;
         
         <p>
           {[...text.pour].map((letter, i) => (
@@ -57,7 +57,8 @@ function Header() {
             </motion.span>
           ))}
         </p>
-        <br />
+        &nbsp;
+
           <p>
             {[...text.de].map((letter, i) => (
               <motion.span key={i} variants={letterAni}>

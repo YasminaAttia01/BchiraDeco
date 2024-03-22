@@ -49,9 +49,9 @@
       }
       .ulclosed,
       .ulopen {
-        position: absolute;
-        height: calc(100vh - 80px);
-        top: 80px;
+        position: fixed;
+        height: 100vh;
+        top: 60px;
         width: 80%;
         color: $black;
         background-image: linear-gradient(to top right, rgba(245, 222, 179, 0.144), rgba(15, 11, 4, 0.144)); ;
