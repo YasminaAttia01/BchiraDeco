@@ -16,7 +16,7 @@ import Modal from "./components/modal/Modal";
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [category, setCategory] = useState("all");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(()=>{
     const timer = setTimeout(()=>{
       setLoading(false)
