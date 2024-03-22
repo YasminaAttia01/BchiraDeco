@@ -30,4 +30,13 @@ button{
   outline: none;
   border: 2px solid rgba(80, 65, 188, 1);
   border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover{
+   scale: 1.05;
+   box-shadow: 1px 1px 5px rgba(79, 65, 188, 0.438);
+  }
+  &:active{
+    scale: 0.95;
+  }
 }
