@@ -24,7 +24,6 @@ function Products({category}) {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-    console.log("🚀 ~ Products ~ currentPosts:", currentPosts)
   
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);

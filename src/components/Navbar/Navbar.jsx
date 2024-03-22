@@ -15,9 +15,10 @@ function Navbar({ open, setOpen }) {
           <div className={open ? "bar open" : "bar"}></div>
         </div>
         <ul className={open ? "ulopen" : "ulclosed"} >
-          <motion.li variants={objectAni} data-hover="Home">&nbsp; Home &nbsp;</motion.li>
-          <motion.li variants={objectAni} data-hover="About">&nbsp;About&nbsp;</motion.li>
-          <motion.li variants={objectAni}   data-hover="Contact">&nbsp;Contact&nbsp;</motion.li>
+         <a href="#accueil"> <motion.li variants={objectAni}>&nbsp; Accueil &nbsp;</motion.li></a>
+        <a href="#aPropos"> <motion.li variants={objectAni}>&nbsp;À propos &nbsp;</motion.li></a> 
+         <a href="#prods"> <motion.li variants={objectAni} >&nbsp;Produits&nbsp;</motion.li></a>
+        <a href="#contact">  <motion.li variants={objectAni}  >&nbsp;Contact&nbsp;</motion.li></a>
         </ul>
       </nav>
     </motion.div>

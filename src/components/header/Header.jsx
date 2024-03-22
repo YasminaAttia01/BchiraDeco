@@ -5,7 +5,7 @@ import { banner, letterAni, text, anim } from "./animation";
 
 function Header( {setOpenNavbar}) {
   return (
-    <motion.div variants={banner} className="header-container" layoutTransition  onClick={() => setOpenNavbar(false)}>
+    <motion.div variants={banner} id="accueil" className="header-container" layoutTransition  onClick={() => setOpenNavbar(false)}>
       <motion.div className="backgroundFilter" />
       <motion.img src={image} alt=""   layoutId='main-image-1' className="backgroundImage" layoutTransition />
       <motion.h2 {...anim(banner)}>

@@ -12,7 +12,7 @@ function APropos() {
     const isInView = useInView(ref);
   
   return (
-    <div className="aPropos-container">
+    <div id="aPropos" className="aPropos-container">
       <div className="aPropos-images">
         <div className="first">
           <motion.img style={{height:"44%" }} {...anim(image1Anim)}   src={image1} alt="" />
@@ -24,16 +24,15 @@ function APropos() {
           <motion.img style={{height:"63%"}} {...anim(image4Anim)} src={image4} alt="" />
         </div>
       </div>
-      <span ref={ref}></span>
       <div className="aPropos-text">
         <h2>À propos de nous</h2>
         <h3>
-          Nous proposons des vêtements de<br/> qualité à des prix abordables et prêts
-          à<br/> être livrés.
+          Nous proposons des vêtements de qualité à des prix abordables et prêts
+          à être livrés.
         </h3>
         <p>
-          Nous servons d'intermédiaire entre les<br/> vendeurs de vêtements et les
-          acheteurs <br/> à la recherche de vêtements à des prix<br/> raisonnables sur
+          Nous servons d'intermédiaire entre les vendeurs de vêtements et les
+          acheteurs  à la recherche de vêtements à des prix raisonnables sur
           notre site web.
         </p>
       </div>

@@ -2,9 +2,9 @@ import "./consultez.scss";
 
 function Consultez({setCategory,category}) {
   return (
-    <div className="consultez-container">
-      <div className="text">CONSULTEZ NOS DERNIERS PRODUITS</div>
-      <div className="icons" id="prods">
+    <div className="consultez-container" >
+      <div className="text" id="prods">CONSULTEZ NOS DERNIERS PRODUITS</div>
+      <div className="icons" >
         <svg onClick={()=>setCategory("all")} className={category==="all"?"active":null} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
           <path
             d="M54.41 4H9.59A5.59 5.59 0 0 0 4 9.59v44.82A5.59 5.59 0 0 0 9.59 60h44.82A5.59 5.59 0 0 0 60 54.41V9.59A5.59 5.59 0 0 0 54.41 4zM22 50a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm16 16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm16 16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4zm0-16a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4z"

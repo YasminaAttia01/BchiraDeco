@@ -3,7 +3,7 @@ import avatar from "../../assets/avatar.webp";
 import "./contact.scss";
 function Contact() {
   return (
-    <div className="contact-container">
+    <div className="contact-container" >
       <div className="contact-form">
         <h2>
           Contactez-nous <br />

@@ -12,21 +12,25 @@ import Products from "./components/products/Products";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Modal from "./components/modal/Modal";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashbord from "./admin/Dashbord";
 
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [category, setCategory] = useState("all");
   const [loading, setLoading] = useState(true);
-  useEffect(()=>{
-    const timer = setTimeout(()=>{
-      setLoading(false)
-    },2900)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2900);
     return () => {
-      clearTimeout(timer)
-    }
-  },[])
+      clearTimeout(timer);
+    };
+  }, []);
   return (
     <div className="App">
+        <Routes>
+          <Route path="/" element={
       <AnimatePresence mode="wait">
         {loading ? (
           <Loader />
@@ -34,19 +38,21 @@ function App() {
           <motion.div key="transition">
             <Navbar open={openNavbar} setOpen={setOpenNavbar} />
             <Header setOpenNavbar={setOpenNavbar} />
-            <div className="container" onClick={() => setOpenNavbar(false)} >
+            <div className="container" onClick={() => setOpenNavbar(false)}>
               <APropos />
               <Achteurs />
               <Vendeurs />
               <Consultez category={category} setCategory={setCategory} />
-              <Products category ={category}/>
+              <Products category={category} />
 
-              <Contact/>
-              <Footer/>
+              <Contact />
+              <Footer />
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>}/>
+          <Route path="/dashbordAdmin" element={<Dashbord />} />
+        </Routes>
     </div>
   );
 }

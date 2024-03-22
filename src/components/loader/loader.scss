@@ -32,8 +32,9 @@
     
       .image1{
         width: 25%;
-        top: 10%;
-        right: 20%;
+        min-width: 300px;
+        top: 20%;
+        right: 0%;
         z-index: 2;
         opacity: 0.2;
       }
