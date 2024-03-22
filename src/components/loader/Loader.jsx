@@ -12,7 +12,7 @@ import image4 from "../../assets/aPropos4.webp";
 const container = {
   show: {
     transition: {
-      staggerChildren: 0.35,
+      staggerChildren: 0.25,
     },
   },
 };
@@ -21,7 +21,7 @@ const item = {
   hidden: { opacity: 0, y: 200 },
   show: {
     opacity: 0.6,
-    y: -200,
+    y: -100,
     transition: {
       duration: 2,
       ease: "easeInOut",
@@ -44,7 +44,7 @@ const itemMain = {
     y: -20,
     transition: {
       duration: 1,
-      delay:1.5
+      delay:2
     },
   },
 };

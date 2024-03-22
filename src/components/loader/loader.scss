@@ -14,7 +14,7 @@
         img{
             position: absolute;
             object-fit: cover;
-            min-width: 100px;
+            min-width: 200px;
         }
         
       .main-image{
@@ -32,7 +32,6 @@
     
       .image1{
         width: 25%;
-        min-width: 300px;
         top: 20%;
         right: 0%;
         z-index: 2;
@@ -41,21 +40,21 @@
       .image2{
         width: 20%;
         top: 70%;
-        left: 10%;
+        left: 0%;
         z-index: 2;
         opacity: 0.2;
       }
       .image3{
         width: 20%;
         top: 80%;
-        right: 20%;
+        right: 0%;
         opacity: 0.2;
         z-index: 2;
       }
       .image4{
         width: 15%;
         top: 5%;
-        left: 20%;
+        left: 0%;
         opacity: 0.2;
         z-index: 2;
       }
