@@ -1,0 +1,142 @@
+$blue:blue;
+$black:black;
+$white:white;
+
+$gray:rgb(215, 207, 255);
+$background:rgb(255, 255, 235);
+
+.admin-navbar{
+    padding: 20px;
+    height: 100px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 70px;
+    .search{
+        position: relative;
+        width: 400px;
+        height: 50px;
+        border-radius: 5px;
+        display: flex;
+        svg{
+            width:30px ;
+            height: 30px;
+            position: absolute;
+            right: 15px;
+            top: 0;
+            transform: translate(0, 30%);
+        }
+
+        input{
+            width: 100%;
+            min-width: 250px;
+            height: 50px;
+        background-color: $gray;
+        padding: 10px;
+            outline: none;
+            border: none;
+            border-radius: 50px;
+            
+        }
+    }
+    .admin{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        width: 300px;
+        height: 70px;
+        background-color: $gray;
+        border-radius: 5px;
+        img{
+            height: 50px;
+        }
+        div{
+            color: black;
+            p{
+                color: gray;
+            }
+        
+    }
+    }
+
+}
+.aside{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: $blue;
+    z-index: 100;
+    padding: 50px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    h2{
+        text-align: center;
+    }
+    ul{
+        list-style: none;
+        line-height: 70px;
+        white-space: nowrap;
+        li{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            color: $white;
+            svg{
+                height: 20px;
+                width: 20px;
+                
+            }
+        }
+
+    }
+}
+.commands-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 20px;
+}
+
+
+.login-admin{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background;
+    form{
+        width: 50%;
+        height: 50%;
+        background-color: $blue;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 5px;
+        div{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            color: $white;
+            font-weight: 600;
+        }
+        input{
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            
+        }
+        
+    }
+}

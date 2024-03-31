@@ -4,16 +4,19 @@ $white:white;
 $gray:rgb(215, 207, 255);
 
 $background:rgb(255, 255, 235);
+@use './components/components';
 @use './parts/parts';
 
 .dashbord-container {
     min-height: 100vh;
     width: 100vw;
-    background-color: $gray;
+    background-color: $blue;
     display: flex;
     .dashbord{
         flex: 1;
         background-color: $background;
         border-radius: 10px;
+       
+
     }
 }

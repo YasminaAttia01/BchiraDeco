@@ -48,7 +48,7 @@ function Vendeurs() {
     //style vendeurs-container at achteurs.scss
     <div className="vendeurs-container">
       <h3>les Vendeurs</h3>
-      <div className="icons">
+      <div className="icons" >
         {boxes.map((box, i) => (
           <DescriptionBox
             key={i}
@@ -59,6 +59,7 @@ function Vendeurs() {
           />
         ))}
       </div>
+      <div id="contact"/>
     </div>
   );
 }

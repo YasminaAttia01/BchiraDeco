@@ -1,0 +1,55 @@
+@use "../../../assets/variables" as *;
+.product-box {
+  background-color: $background;
+  display: flex;
+  align-items: center;
+  height: 150px;
+  width: 80%;
+  gap: 20px;
+  justify-content: space-between;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.514);
+  border-radius: 5px;
+  img {
+    min-width: 100px;
+    max-width: 200px;
+    height: 100px;
+    flex: 1
+    
+
+
+  }
+  div {
+    flex: 1,6;
+    width: 100%;
+  }
+  span {
+    flex:0.5;
+    white-space: nowrap;
+  }
+  @media (max-width: 800px) {
+    width: 95%;
+  }
+  @media (max-width: 700px) {
+    width: 90%;
+  }
+  .delete {
+    flex: 0.3;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+
+    div {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: red;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

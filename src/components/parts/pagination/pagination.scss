@@ -1,8 +1,9 @@
 @use "../../../assets/variables" as *;
 .pagination {
-  display: flex;
+@include flex(5px);
   justify-content: center;
   align-items: center;
+  
   list-style: none;
   padding: 0;
   margin: 20px 0px;
@@ -23,6 +24,7 @@
       border: 2px solid black;
     &:active{
       color: $yellow;
+      border-color: $yellow;
     }
   }
   }

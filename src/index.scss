@@ -3,18 +3,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
-  scroll-behavior: smooth;
 
-}
+  font-family: "Lato", sans-serif;
+  max-width: 100%;}
 
 
 html{
   font-size: 16px;
-  @media (min-height: 800px) {
-  
-    font-size: 20px;
-  }
+
   @media (min-height: 1000px) {
   
     font-size: 26px;
@@ -22,14 +18,12 @@ html{
 }
 button{
   background-color: rgba(80, 65, 188, 1);
-  float: right;
   width: 130px;
-  height: 50px;
+  min-height: 40px;
   color: white;
   font-weight: 700;
   outline: none;
   border: 2px solid rgba(80, 65, 188, 1);
-  border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
   &:hover{

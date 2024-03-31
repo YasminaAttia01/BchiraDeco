@@ -3,23 +3,39 @@
 @use "../../assets/variables" as *;
 
 .navbar-container {
-  position: sticky;
+  position: fixed;
   width: 100%;
   top: 0;
   overflow: hidden;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   height: 60px;
   padding: 1rem;
   z-index: 2000;
+  padding-right: 10%;
   background-color: $background;
   border-bottom: 1px solid rgba(110, 110, 110, 0.301);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.219);
+  transition: all 0.5s ease-in-out;
+  h2{
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  left: 10%;
+}
+h3{
+  float: right;
+}
+
   img {
     height: inherit;
   }
   nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+  
     ul {
       display: flex;
       list-style-type: none;
@@ -30,6 +46,7 @@
       li {
        cursor: pointer;
         color: $black;
+    
         text-shadow: none;
         position: relative;
         &::before {
@@ -53,5 +70,32 @@
             opacity: 0.3;
           }
         }}}
+  }
+  .shopping-card{
+    position: relative;
+    p{
+      position: absolute;
+      top: 0;
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      background-color: $yellow;
+      color: $white;
+      font-size: 0.8rem;
+      text-align: center;
+      border-radius: 50%;
+      @media (max-width: 600px) {
+        width: 25px;
+        height: 25px;
+        font-size: 1rem;
+      }
+    }
+    img{
+      cursor: pointer;
+      width: 25px;
+      @media (max-width: 600px) {
+        width: 35px;
+      }
+    }
   }
 }

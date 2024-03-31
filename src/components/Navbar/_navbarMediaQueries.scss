@@ -1,5 +1,5 @@
 @use "../../assets/variables" as *;
-@media (max-width: 600px) {
+@media (max-width: 730px) {
   .navbar-container {
     nav {
       .hamburger-menu {
@@ -50,7 +50,7 @@
       .ulclosed,
       .ulopen {
         position: fixed;
-        height: 100vh;
+        height: calc(100vh - 60px);
         top: 60px;
         width: 80%;
         color: $black;

@@ -1,7 +1,9 @@
 export const anim = (variants) => {
     return {
       initial: "initial",
-      whileInView: "animate",
+      
+      animate: "animate",
+      exit: "exit",
       variants,
     };
   };
@@ -21,7 +23,14 @@ export const anim = (variants) => {
     animate: {
       y: 0,
       transition: {
-        duration: 1,
+        duration: 0.5,
+      },
+
+    },
+    exit: {
+      y: 200,
+      transition: {
+        duration: 0.5,
       },
     },
   };

@@ -1,13 +1,14 @@
 import "./header.scss";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import image from "../../assets/backgroundHeader.webp";
 import { banner, letterAni, text, anim } from "./animation";
 
 function Header( {setOpenNavbar}) {
   return (
-    <motion.div variants={banner} id="accueil" className="header-container" layoutTransition  onClick={() => setOpenNavbar(false)}>
+    <AnimatePresence>
+    <motion.div  id="accueil" className="header-container"   onClick={() => setOpenNavbar(false)}>
+      <motion.img src={image} alt=""   layoutId='main-image-1' className="backgroundImage"  />
       <motion.div className="backgroundFilter" />
-      <motion.img src={image} alt=""   layoutId='main-image-1' className="backgroundImage" layoutTransition />
       <motion.h2 {...anim(banner)}>
         <p>
           {[...text.style].map((letter, i) => (
@@ -86,6 +87,7 @@ function Header( {setOpenNavbar}) {
         </p>
       </motion.h2>
     </motion.div>
+    </AnimatePresence>
   );
 }
 
