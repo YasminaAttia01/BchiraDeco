@@ -11,12 +11,15 @@ import { backLink } from "../../utils/AxiosConfig";
 function Products({ category }) {
   const { products } = useContext(ProductStore);
   const [openModal, setOpenModal] = useState(false);
-  const [posts, setPosts] = useState(products);
+  const [posts, setPosts] = useState([]);
+  
   const [product , setProduct] = useState({})
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(9);
-
+useEffect(()=>{
+  setPosts(products.filter((post)=>post.status))
+},[products])
   useEffect(() => {
     setPosts(
       products.filter((post) =>
