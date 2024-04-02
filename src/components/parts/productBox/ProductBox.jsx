@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import "./productBox.scss";
 import { cardStore } from "../../../context/CardContext";
+import { backLink } from "../../../utils/AxiosConfig";
 
 function ProductBox({ product,setOpenModal,setProduct }) {
     const {card,dispatchCard} = useContext(cardStore)
@@ -10,7 +11,7 @@ function ProductBox({ product,setOpenModal,setProduct }) {
     };
   return (
     <div className="product-box">
-      <img src={"http://localhost:8000" + product.images[0]} alt=""  onClick={()=>{setOpenModal(true); setProduct(product)}}/>
+      <img src={backLink + product.images[0]} alt=""  onClick={()=>{setOpenModal(true); setProduct(product)}}/>
       <div><h3> {product.title}</h3>
       <h5>{product.brand}</h5></div>
       <span>{product.price} DT</span>
