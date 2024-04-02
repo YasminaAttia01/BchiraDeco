@@ -10,15 +10,13 @@ import AuthContext from "./context/AuthContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
       <CardContext>
         <ProductsContext>
           <AuthContext>
             <App />
           </AuthContext>
         </ProductsContext>
-      </CardContext>
-    </React.StrictMode>
+     </CardContext>
   </BrowserRouter>
 );
 

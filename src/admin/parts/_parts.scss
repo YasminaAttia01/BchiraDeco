@@ -11,9 +11,38 @@
     }
  
     .plus{
+position: relative;
         svg{
             width: 30px;
             height: 30px;
         }
+        .dropdown{
+            z-index: 100;
+            display: none;
+            position: absolute;
+           left: -100px;
+            background-color: white;
+            min-width: 150px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.568);
+            li{
+                list-style: none;
+                cursor: pointer;
+                color: gray;
+                margin: 5px 0;
+                font-size: 1.2rem;
+                font-weight: 600;
+                &:hover{
+                    color: black;
+                }
+
+            }
+        }
+        &:hover{
+            .dropdown{
+                display: block;
+            }
+        }   
     }
 }

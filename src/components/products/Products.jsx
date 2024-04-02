@@ -6,6 +6,7 @@ import Pagination from "../parts/pagination/Pagination";
 import { ProductStore } from "../../context/ProductsContext";
 import Modal from "../modal/Modal";
 import { AnimatePresence } from "framer-motion";
+import { backLink } from "../../utils/AxiosConfig";
 
 function Products({ category }) {
   const { products } = useContext(ProductStore);
@@ -46,7 +47,7 @@ function Products({ category }) {
               className="list-group-item"
 
             >
-              <img src={"http://localhost:8000" + post.images[0]} alt="" />
+              <img src={backLink + post.images[0]} alt="" />
               <h3> {post.title}</h3>
             <div>  <h5>{post.brand}</h5>
               <p>{post.price} DT</p></div>

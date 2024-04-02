@@ -3,6 +3,7 @@ import CommandBox from '../parts/CommandBox';
 import Pagination from '../../components/parts/pagination/Pagination';
 import { ProductStore } from '../../context/ProductsContext';
 import ArticleBox from '../parts/ArticleBox';
+import { Link } from 'react-router-dom';
 
 function Articles() {
  const {products,setProducts}=useContext(ProductStore)
@@ -10,7 +11,7 @@ function Articles() {
     const [postsPerPage] = useState(5);
   
     // Get current posts
-    const indexOfLastPost = currentPage+1 * postsPerPage;
+    const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
   
@@ -19,6 +20,11 @@ function Articles() {
   
     return (
       <div className="commands-container">
+        <h2>
+          Articles
+        </h2>
+
+        <Link to={'add'}> <button>Ajouter</button></Link>
         {currentPosts.map((post) => (
           <ArticleBox key={post.id} product={post} />
         ))}

@@ -54,14 +54,18 @@
         width: 80%;
       }
       .small-images {
+        
+        width: 70%;
         height: 20%;
         @include flex(10px);
         align-items: center;
         justify-content: center;
         position: relative;
         img {
+flex: 1;
           height: 100%;
           width: 100%;
+          object-fit: cover;
         }
       }
     }

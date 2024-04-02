@@ -1,7 +1,6 @@
 export const anim = (variants) => {
   return {
     initial: "initial",
-
     whileInView: "animate",
 
     variants,

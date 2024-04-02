@@ -4,7 +4,7 @@ import { authStore } from "./AuthContext";
 
 export const orderStore = createContext();
 
-const orderActions = {
+export const orderActions = {
   getOrders: (orders) => {
     return { type: "GET_ORDERS", payload: orders };
   },
@@ -29,6 +29,7 @@ const orderRducer = (state, action) => {
 function OrderContext({ children }) {
     const {auth}=useContext(authStore)  
   const [order, dispatchOrder] = useReducer(orderRducer, []);
+  
   useEffect(() => {
     axiosConfig
       .get("/orders",{headers:{Authorization:`Bearer ${auth}`}})

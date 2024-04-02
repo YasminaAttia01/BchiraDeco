@@ -23,6 +23,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Login from "./admin/components/Login";
+import AddProduct from "./admin/components/AddProduct";
 
 const appTrans = {
   initial: {
@@ -44,8 +45,8 @@ const appTrans = {
 function App() {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [category, setCategory] = useState("all");
-  const [loading, setLoading] = useState(true);
-  const [loading2, setLoading2] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -144,6 +145,8 @@ function App() {
                     <Route path="" element={<Commands />} />
                     <Route path="ventes" element={<Ventes />} />
                     <Route path="articles" element={<Articles />} />
+                    <Route path="articles/add" element={<AddProduct />} />
+
                   </Route>
                   
                 </Route>

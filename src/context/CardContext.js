@@ -30,15 +30,7 @@ const cardReducer=(state,action)=>{
 
 
 function CardContext({children}) {
-    const [card,dispatchCard]=useReducer(cardReducer,[ {
-        brand: "Nike",
-        category: "tshirt",
-        color: "White",
-        images:[("\\exmple1.png", "\\exmple2.png", "\\exmple3.jpg")],
-        price: 25,
-        title: "Nike Graphic T-shirt",
-        _id: "6601fb13e931a7d9df0a1989",
-      }])
+    const [card,dispatchCard]=useReducer(cardReducer,[])
 
   return (
     <cardStore.Provider value={{card,dispatchCard}}>

@@ -20,7 +20,7 @@ function APropos() {
         </div>
 
         <div className="second">
-          <motion.img style={{height:"36%"}} {...anim(image3Anim)} src={image2} alt="" />
+          <motion.img style={{height:"36%"}}  {...anim(image3Anim)} src={image2} alt="" />
           <motion.img style={{height:"63%"}} {...anim(image4Anim)} src={image4} alt="" />
         </div>
       </div>
