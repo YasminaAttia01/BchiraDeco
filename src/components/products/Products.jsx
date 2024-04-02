@@ -17,12 +17,10 @@ function Products({ category }) {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(9);
-useEffect(()=>{
-  setPosts(products.filter((post)=>post.status))
-},[products])
+
   useEffect(() => {
     setPosts(
-      products.filter((post) =>
+      products.filter((post) =>post.status).filter((post) =>
        {   setCurrentPage(1)
         return category === "all" ? true : post.category === category
       }
