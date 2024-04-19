@@ -37,6 +37,7 @@ function OrderContext({ children }) {
         if (res.data.status === "success") {
           dispatchOrder(orderActions.getOrders(res.data.data));
         }
+        
       })
       .catch((err) => console.log(err));
   },[]);

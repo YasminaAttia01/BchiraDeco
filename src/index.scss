@@ -10,11 +10,13 @@
 
 html{
   font-size: 16px;
-
   @media (min-height: 1000px) {
   
     font-size: 23px;
   }
+}
+a {
+  text-decoration: none;
 }
 button{
   background-color: rgba(80, 65, 188, 1);

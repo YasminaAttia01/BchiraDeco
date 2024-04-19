@@ -24,6 +24,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Login from "./admin/components/Login";
 import AddProduct from "./admin/components/AddProduct";
+import CommandDetails from "./admin/components/CommandDetails";
 
 const appTrans = {
   initial: {
@@ -146,6 +147,7 @@ function App() {
                     <Route path="ventes" element={<Ventes />} />
                     <Route path="articles" element={<Articles />} />
                     <Route path="articles/add" element={<AddProduct />} />
+                    <Route path="commands/:id" element={<CommandDetails />} />
 
                   </Route>
                   

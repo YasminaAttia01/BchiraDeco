@@ -19,6 +19,8 @@ const {products}=useContext(ProductStore)
 
   return (
     <div className="commands-container">
+      <h2>Les Ventes</h2>
+      <section>
       {currentPosts.map((post) => (
         <VenteBox key={post.id} post={post} />
       ))}
@@ -27,7 +29,7 @@ const {products}=useContext(ProductStore)
         currentPage={currentPage}
         totalPosts={products.length}
         paginate={paginate}
-      />
+      /></section>
     </div>
   );
 }

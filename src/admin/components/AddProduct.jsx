@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import axiosConfig from "../../utils/AxiosConfig";
 import { authStore } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 function AddProduct() {
 const {auth}=useContext(authStore)
@@ -8,7 +9,7 @@ const {auth}=useContext(authStore)
 
   const hundleAddProduct = (e) => {
     e.preventDefault();
-    const formData=new FormData()
+   if(  product?.images?.length===3) {const formData=new FormData()
     for (let i = 0; i < product.images.length; i++) {
       formData.append('images', product.images[i]);
   }
@@ -23,12 +24,13 @@ const {auth}=useContext(authStore)
     })
     .catch((err) => {
       console.log(err);
-    })
+    })}
+    else{toast.error('Veuillez ajouter  3 images')}
   }
   return (
     <div className="add-product">
       <h2>Add article</h2>
-      <form action="" onSubmit={hundleAddProduct}>
+      <form action="" >
         <input type="file" name="images" id="images" multiple onChange={e=>setProduct({...product,images:e.target.files})} />
         <div className="inputs">
           <label>Nom de l'article</label>{" "}
@@ -66,7 +68,7 @@ const {auth}=useContext(authStore)
         <div className="inputs">
           <label>Prix</label> <input type="number" name="price" onChange={e=>setProduct({...product,price:e.target.value})} />
         </div>
-        <input type="submit" />
+        <button onClick={hundleAddProduct}>Ajouter</button>
       </form>
     </div>
   );

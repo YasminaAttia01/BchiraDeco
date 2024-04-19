@@ -30,7 +30,7 @@ export const text = {
   frontieres:"FRONTIÈRES,",
   pour: "POUR",
   chaque: "CHAQUE",
-moument:"MOUMENT",
+moument:"MOMENT",
   de: "DE",
   votre: "VOTRE",
   vie: "VIE",

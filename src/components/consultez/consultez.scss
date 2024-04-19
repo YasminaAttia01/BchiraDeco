@@ -19,9 +19,10 @@
         }
     }
     .icons{
-        height: 120px;
+        height: 150px;
         min-height: 50px;
         width: 100%;
+     
         position: relative;
         box-shadow: 5px 0 10px  #00000041;
         background-color: $background;
@@ -32,6 +33,10 @@
         align-items: center;
         margin:  20px 0;
         max-width: 100%;
+        @media (max-width: 800px) {
+            padding: 5px 0px;
+            height: 100px;
+        }
         @media (max-width: 600px) {
             padding: 5px 0px;
             height: 70px;
@@ -63,7 +68,7 @@
             }
         }
         .active{
-            background-color: rgba(170, 69, 253, 0.4);
+            background-color: $yellow;
         }
     }
 }

@@ -1,21 +1,21 @@
 @use "../../assets/variables" as *;
 
 .aPropos-container {
-  &::before{
-    content: "";
-    position: absolute;
-    top: 0%;
-    left: -3px;
-    transform-origin: right;
-    transform: rotate(4deg) skew(4deg);
-    width: calc(100% + 3px);
-    z-index: 1;
-    height: 100%;
-    object-fit: cover;
-    background-color:$background;
-}
+//   &::before{
+//     content: "";
+//     position: absolute;
+//     top: 0%;
+//     left: -3px;
+//     transform-origin: right;
+//     transform: rotate(4deg) skew(4deg);
+//     width: calc(100% + 3px);
+//     z-index: 1;
+//     height: 100%;
+//     object-fit: cover;
+//     background-color:$background;
+// }
   width: 100%;
-  min-height: 100vh;
+ height: 100vh;
   position: relative;
   pointer-events: none;
   @include flex(30px);
@@ -38,11 +38,12 @@
       font-size: 1.6rem;
     }
     p {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       background-color: $yellow;
       font-weight: 300;
       padding: 20px 30px;
       line-height: 35px;
+      color: white;
     }
   }
   .aPropos-images {
@@ -91,6 +92,8 @@
       z-index: 1;
     }
     .aPropos-text{
+      position: relative;
+      top:20%;
       h2 {
         text-decoration: underline;
         font-weight: 400;
@@ -101,7 +104,7 @@
       }
       p {
         font-size: 1.2rem;
-        background-color: rgba(238, 198, 96, 0.479);
+        background-color: #4f41bcb0;
         font-weight: 300;
         padding: 20px 30px;
         line-height: 35px;

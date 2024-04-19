@@ -26,6 +26,8 @@ function Commands() {
 
   return (
     <div className="commands-container">
+      <h2>Les Commandes</h2>
+      <section>
       {currentPosts.map((post) => (
         <CommandBox key={post.id} post={post} dispatchOrder={dispatchOrder} />
       ))}
@@ -34,7 +36,7 @@ function Commands() {
         currentPage={currentPage}
         totalPosts={commands.length}
         paginate={paginate}
-      />
+      /></section>
     </div>
   );
 }
