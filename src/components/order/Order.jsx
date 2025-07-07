@@ -54,7 +54,7 @@ function Order() {
   };
   useEffect(() => {
     if (card.length === 0 && !openModal) {
-      navigate("/");
+      
     }
   }, [card.length, navigate, openModal]);
 
