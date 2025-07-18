@@ -1,70 +1,51 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import Dashboard from "./pages/Dashboard";
-import "./app.scss";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { Helmet } from "react-helmet";
+import { AnimatePresence, motion } from "framer-motion";
+import "react-toastify/dist/ReactToastify.css";
+import "./app.scss";
+import "./i18n";
+
+// Composants publics
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/header/Header";
 import APropos from "./components/aPropos/APropos";
 import Achteurs from "./components/achteurs/Achteurs";
 import Vendeurs from "./components/vendeurs/Vendeurs";
 import Consultez from "./components/consultez/Consultez";
-import Loader from "./components/loader/Loader";
-import { AnimatePresence, motion } from "framer-motion";
 import Products from "./components/products/Products";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
-import { useLocation } from "react-router-dom";
-import Order from "./components/order/Order";
+import Loader from "./components/loader/Loader";
 import Transition from "./components/transition/Transition";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ProtectedRoutes from "./utils/ProtectedRoutes";
-import './i18n';
+
+// Pages
+import LoginPage from "./pages/LoginPage";
+import Order from "./components/order/Order";
+import DashboardLayout from "./layouts/DashboardLayout"; // à créer
+import OrdersPage from "./pages/dashboard/OrdersPage"; // à créer
+import ProductsPage from "./pages/dashboard/ProductsPage"; // à créer
 
 const appTrans = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.5 } },
+  exit: { opacity: 0, transition: { duration: 0.5 } },
 };
-function App() {
-    const isAuthenticated = !!localStorage.getItem("token"); // simple check
 
+function App() {
+  const location = useLocation();
   const [openNavbar, setOpenNavbar] = useState(false);
   const [category, setCategory] = useState("all");
-  const [loading, setLoading] = useState(false);
-  const [loading2, setLoading2] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-  useEffect(() => {
-    const timer2 = setTimeout(() => {
-      setLoading2(false);
-    }, 4000);
-    return () => {
-      clearTimeout(timer2);
-    };
-  }, []);
+  const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
   const [nav, setNav] = useState(false);
-  const location = useLocation();
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
+    setTimeout(() => setLoading2(false), 4000);
+  }, []);
 
   useEffect(() => {
     setNav(false);
@@ -72,64 +53,46 @@ function App() {
 
   return (
     <div className="App">
+      {/* Toast messages */}
       <ToastContainer
         position="top-center"
         autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
         theme="light"
-        bodyStyle={{ backgroundColor: "white", color: "black" }}
         toastStyle={{ backgroundColor: "white", color: "black" }}
         progressStyle={{ backgroundColor: "black" }}
       />
+
+      {/* Scroll behavior */}
       <Helmet>
-        {!nav ? (
-          <style>{`* { scroll-behavior: smooth; }`}</style>
-        ) : (
-          <style>{`* { scroll-behavior: auto; }`}</style>
-        )}
+        <style>{`* { scroll-behavior: ${nav ? "auto" : "smooth"}; }`}</style>
       </Helmet>
+
+      {/* Animation principale */}
       <AnimatePresence mode="popLayout">
         {loading ? (
           <Loader />
         ) : (
           <motion.div
-            key={"app-trans"}
-            style={{
-              width: "100%",
-              position: loading2 ? "fixed" : "static",
-              top: 0,
-            }}
+            key="app-trans"
+            style={{ width: "100%", position: loading2 ? "fixed" : "static", top: 0 }}
             initial="initial"
             animate="animate"
             exit="exit"
             variants={appTrans}
           >
-            {" "}
             <Navbar open={openNavbar} setOpen={setOpenNavbar} setNav={setNav} />
             <AnimatePresence mode="popLayout" initial={false}>
               <Routes location={location} key={location.pathname}>
+                {/* Page publique */}
                 <Route
                   path="/"
                   element={
                     <Transition>
                       <Header setOpenNavbar={setOpenNavbar} />
-                      <div
-                        className="App-container"
-                        onClick={() => setOpenNavbar(false)}
-                      >
+                      <div className="App-container" onClick={() => setOpenNavbar(false)}>
                         <APropos />
-                        <Consultez
-                          category={category}
-                          setCategory={setCategory}
-                        />
+                        <Consultez category={category} setCategory={setCategory} />
                         <Products category={category} />
-                        
                         <Vendeurs />
                         <Achteurs />
                         <Contact />
@@ -138,12 +101,22 @@ function App() {
                     </Transition>
                   }
                 />
-                <Route exact path="/order" element={<Order />} />
-                      <Route path="/login" element={<LoginPage />} />
-      <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
 
-                  
-                
+                {/* Autres pages publiques */}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/order" element={<Order />} />
+
+                {/* Routes protégées du dashboard */}
+                <Route
+                  path="/dashboard"
+                  element={
+                    isAuthenticated ? <DashboardLayout /> : <Navigate to="/login" />
+                  }
+                >
+                  <Route path="orders" element={<OrdersPage />} />
+                  <Route path="products" element={<ProductsPage />} />
+                  {/* Ajoute ici d'autres routes internes */}
+                </Route>
               </Routes>
             </AnimatePresence>
           </motion.div>
