@@ -3,7 +3,7 @@ import axiosConfig from "../../utils/AxiosConfig";
 import { authStore } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import image from "../../assets/aPropos4.webp";
+import image from "../../assets/apropos4.png";
 
 function Login() {
   const { auth, setAuth } = useContext(authStore);

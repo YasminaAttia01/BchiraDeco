@@ -1,75 +1,71 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import "./products.scss";
+import m1 from "../../assets/m1.png";
+import m2 from "../../assets/m2.png";
+import b1 from "../../assets/b1.png";
+import b2 from "../../assets/b2.png";
 
+const responsive = {
+  desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
+  tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
+  mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
+};
 
-import Pagination from "../parts/pagination/Pagination";
-import { ProductStore } from "../../context/ProductsContext";
-import Modal from "../modal/Modal";
-import { AnimatePresence } from "framer-motion";
-import { backLink } from "../../utils/AxiosConfig";
+const services = [
+   {
+    title: "Travaux de menuiserie",
+    images: [m1, m2],
+  },
+  {
+    title: "Revêtement de façades",
+    images: [b1, b2],
+  },
+];
 
-function Products({ category }) {
-  const { products } = useContext(ProductStore);
-  const [openModal, setOpenModal] = useState(false);
-  const [posts, setPosts] = useState([]);
-  
-  const [product , setProduct] = useState({})
+const Products = () => {
+  const [serviceIndex, setServiceIndex] = useState(0);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(9);
-
-  useEffect(() => {
-    setPosts(
-      products.filter((post) =>post.status).filter((post) =>
-       {   setCurrentPage(1)
-        return category === "all" ? true : post.category === category
-      }
-      )
-    );
-  }, [category, products,]);
-
-  // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
+  const handleAfterChange = (index) => {
+    setServiceIndex(index);
+  };
 
   return (
-    <>
-      <div className="products-container">
-        <ul className="list-group">
-          {currentPosts.map((post) => (
-            <div
-              key={post._id}
-              className="list-group-item"
-
-            >
-              <img src={backLink + post.images[0]} alt="" />
-              <h3> {post.title}</h3>
-            <div>  <h5>{post.brand}</h5>
-              <p>{post.price} DT</p></div>
-              <button    onClick={() => {setOpenModal(true); setProduct(post)} }>voir plus</button>
-            </div>
-          ))}
-        </ul>
-        <AnimatePresence>
-          {openModal ? (
-            <Modal openModal={openModal} product={product}  setOpenModal={setOpenModal} />
-          ) : null}
-        </AnimatePresence>
-        <Pagination
-          postsPerPage={postsPerPage}
-          currentPage={currentPage}
-          totalPosts={posts.length}
-          paginate={paginate}
-        />
+    <div className="services-container">
+      <div className="section-header">
+        <h1>Services proposés</h1>
+        <div className="underline">
+          <div className="line" />
+          <div className="dot" />
+        </div>
       </div>
-    </>
+
+      <Carousel
+        responsive={responsive}
+        infinite
+        arrows
+        autoPlay
+        showDots
+        afterChange={handleAfterChange}
+        className="carousel-wrapper"
+      >
+        {services.map((service, index) => (
+          <div className="carousel-slide" key={index}>
+            <div className="overlay">
+              <h2>{service.title}</h2>
+            </div>
+            <div className="image-gallery">
+              {service.images.map((img, i) => (
+                <img key={i} src={img} alt={service.title} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </Carousel>
+
+    </div>
   );
-}
+};
 
 export default Products;

@@ -23,15 +23,3 @@ export const letterAni = {
     },
   },
 };
-
-export const text = {
-  style: "STYLE",
-  sans: "SANS ",
-  frontieres:"FRONTIÈRES,",
-  pour: "POUR",
-  chaque: "CHAQUE",
-moument:"MOMENT",
-  de: "DE",
-  votre: "VOTRE",
-  vie: "VIE",
-};

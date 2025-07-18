@@ -1,4 +1,3 @@
-// import logo from "../../assets/logo.png"
 import { useContext, useEffect, useState } from "react";
 import { cardStore } from "../../context/CardContext";
 import { anim, banner, objectAni } from "./animation";
@@ -6,19 +5,49 @@ import "./navbar.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import cardIcon from "../../assets/cardIcon.webp";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import logo from "../../assets/logo.svg";
+
 function Navbar({ open, setOpen, setNav }) {
+  const { t, i18n } = useTranslation();
   const { card } = useContext(cardStore);
   const loc = useLocation();
   const [location, setLocation] = useState(loc);
   const navigate = useNavigate();
+
   useEffect(() => {
     setLocation(loc);
   }, [loc]);
+
+  const changeLanguage = (lng) => {
+    if (typeof i18n.changeLanguage === "function") {
+      i18n.changeLanguage(lng).then(() => {
+        localStorage.setItem("i18nextLng", lng);
+        document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
+      });
+    } else {
+      console.error("❌ i18n.changeLanguage is not a function", i18n);
+    }
+  };
+
   return location.pathname === "/" || location.pathname === "/order" ? (
     <motion.div key={"navbar"} className="navbar-container" {...anim(banner)}>
-      {/* <img src={logo} alt="logo" /> */}
-      <motion.h2 variants={objectAni}>logo</motion.h2>
+      <div className="navbar-top">
+        
+
+        <div className="language-switch">
+          <button onClick={() => changeLanguage("fr")}>FR</button>
+          <button onClick={() => changeLanguage("ar")}>AR</button>
+        </div>
+      </div>
+      <div className="logo">
+          <Link to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
+        </div>
+
       <div style={{ width: "100px" }} />
+
       <AnimatePresence mode="popLayout">
         {location.pathname !== "/order" ? (
           <motion.nav
@@ -34,7 +63,6 @@ function Navbar({ open, setOpen, setNav }) {
                 <img src={cardIcon} alt="" />
               </Link>
             </motion.div>
-            
 
             <div
               onClick={() => setOpen(!open)}
@@ -42,22 +70,19 @@ function Navbar({ open, setOpen, setNav }) {
             >
               <div className={open ? "bar open" : "bar"}></div>
             </div>
+
             <ul className={open ? "ulopen" : "ulclosed"}>
               <a onClick={() => setOpen(false)} href="#accueil">
-                <motion.li variants={objectAni}>
-                  &nbsp; Accueil &nbsp;
-                </motion.li>
+                <motion.li variants={objectAni}>&nbsp;{t("home")}&nbsp;</motion.li>
               </a>
               <a onClick={() => setOpen(false)} href="#aPropos">
-                <motion.li variants={objectAni}>
-                  &nbsp;À propos &nbsp;
-                </motion.li>
+                <motion.li variants={objectAni}>&nbsp;{t("about")}&nbsp;</motion.li>
               </a>
               <a onClick={() => setOpen(false)} href="#prods">
-                <motion.li variants={objectAni}>&nbsp;Produits&nbsp;</motion.li>
+                <motion.li variants={objectAni}>&nbsp;{t("products")}&nbsp;</motion.li>
               </a>
               <a onClick={() => setOpen(false)} href="#contact">
-                <motion.li variants={objectAni}>&nbsp;Contact&nbsp;</motion.li>
+                <motion.li variants={objectAni}>&nbsp;{t("contact")}&nbsp;</motion.li>
               </a>
             </ul>
           </motion.nav>
@@ -74,7 +99,7 @@ function Navbar({ open, setOpen, setNav }) {
             key={"back"}
             style={{ cursor: "pointer" }}
           >
-            Retour
+            {t("back")}
           </motion.h3>
         )}
       </AnimatePresence>

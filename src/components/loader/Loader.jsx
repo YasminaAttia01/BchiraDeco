@@ -2,10 +2,10 @@ import "./loader.scss";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Image from "../../assets/backgroundHeader.webp";
-import image1 from "../../assets/aPropos1.webp";
-import image2 from "../../assets/aPropos2.webp";
-import image3 from "../../assets/aPropos3.webp";
-import image4 from "../../assets/aPropos4.webp";
+import image1 from "../../assets/apropos1.png";
+import image2 from "../../assets/apropos2.png";
+import image3 from "../../assets/apropos3.png";
+import image4 from "../../assets/apropos4.png";
 
 // Import images
 

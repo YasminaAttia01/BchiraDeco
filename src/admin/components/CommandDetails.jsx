@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import axiosConfig, { backLink } from "../../utils/AxiosConfig";
 import { authStore } from "../../context/AuthContext";
 import avatar from "../../assets/avatar.webp";
-import { hydrate } from "react-dom";
 function CommandDetails() {
   const [order, setOrder] = useState({});
   const params = useParams();

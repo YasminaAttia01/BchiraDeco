@@ -1,14 +1,18 @@
 import "./aPropos.scss"
-import image1 from "../../assets/aPropos1.webp";
-import image2 from "../../assets/aPropos2.webp";
-import image3 from "../../assets/aPropos3.webp";
-import image4 from "../../assets/aPropos4.webp";
+import image1 from "../../assets/apropos1.png";
+import image2 from "../../assets/apropos2.png";
+import image3 from "../../assets/apropos3.png";
+import image4 from "../../assets/apropos4.png";
 import {motion, useAnimation, useInView} from "framer-motion"
 import { image1Anim,image2Anim,image3Anim,image4Anim,anim } from "./animation";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+
 
 function APropos() {
     const ref = useRef(null);
+      const { t, i18n } = useTranslation();
+
     const isInView = useInView(ref);
   
   return (
@@ -25,15 +29,10 @@ function APropos() {
         </div>
       </div>
       <div className="aPropos-text">
-        <h2>À propos de nous</h2>
-        <h3>
-          Nous proposons des vêtements de qualité à des prix abordables et prêts
-          à être livrés.
-        </h3>
+        <h2>&nbsp;{t("about")}&nbsp;</h2>
+       
         <p>
-          Nous servons d'intermédiaire entre les vendeurs de vêtements et les
-          acheteurs  à la recherche de vêtements à des prix raisonnables sur
-          notre site web.
+          &nbsp;{t("intro")}&nbsp;
         </p>
       </div>
     </div>

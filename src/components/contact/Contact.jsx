@@ -1,30 +1,29 @@
-import image from "../../assets/contact.webp";
+import image from "../../assets/contact.png";
 import avatar from "../../assets/avatar.webp";
 import "./contact.scss";
+import { useTranslation } from "react-i18next";
+
 function Contact() {
+    const { t, i18n } = useTranslation();
+
   return (
     <div className="contact-container" >
       <div className="contact-form">
         <h2>
-          Contactez-nous <br />
-          pour plus d'informations.
+          &nbsp;{t("contact_us")}&nbsp;
         </h2>
         <div className="exmple">
           <img src={avatar} alt="" />
-          <p>
-            Salut, je suis Islem. Besoin d'aide ? Utilisez le formulaire
-            ci-dessous ou envoyez-moi un email à vente@gmail.com
-          </p>
         </div>
         <form>
-          <label>Name</label>
+          <label>&nbsp;{t("nom")}&nbsp;</label>
           <input type="text"  placeholder="votre nom ici"/>
-          <label >Email</label>
+          <label >&nbsp;{t("email")}&nbsp;</label>
           <input type="email" placeholder="votre email ici" />
-          <label>Message</label>
+          <label>&nbsp;{t("message")}&nbsp;</label>
           <textarea name="message" cols="30" rows="10" placeholder="votre message ici"></textarea>
-          <button type="submit">Envoyer</button>
-        </form>
+          <button type="submit">&nbsp;{t("send")}&nbsp;</button>
+        </form>&
       </div>
      <div className="contact-img"> <img src={image} alt="" /></div>
     </div>

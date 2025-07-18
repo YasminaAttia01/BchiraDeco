@@ -12,19 +12,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import Products from "./components/products/Products";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Dashbord from "./admin/Dashbord";
 import Commands from "./admin/components/Commands";
 import Ventes from "./admin/components/Ventes";
 import Articles from "./admin/components/Articles";
 import Order from "./components/order/Order";
 import Transition from "./components/transition/Transition";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Login from "./admin/components/Login";
 import AddProduct from "./admin/components/AddProduct";
 import CommandDetails from "./admin/components/CommandDetails";
+import './i18n';
 
 const appTrans = {
   initial: {
@@ -86,7 +87,7 @@ function App() {
         theme="light"
         bodyStyle={{ backgroundColor: "white", color: "black" }}
         toastStyle={{ backgroundColor: "white", color: "black" }}
-        progressStyle={{ backgroundColor: "violet" }}
+        progressStyle={{ backgroundColor: "black" }}
       />
       <Helmet>
         {!nav ? (
@@ -130,8 +131,9 @@ function App() {
                           setCategory={setCategory}
                         />
                         <Products category={category} />
-                        <Achteurs />
+                        
                         <Vendeurs />
+                        <Achteurs />
                         <Contact />
                         <Footer />
                       </div>
