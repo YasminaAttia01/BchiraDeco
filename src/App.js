@@ -13,11 +13,12 @@ import Header from "./components/header/Header";
 import APropos from "./components/aPropos/APropos";
 import Achteurs from "./components/achteurs/Achteurs";
 import Vendeurs from "./components/vendeurs/Vendeurs";
-import CategoryShowcase from "./components/products/CategoryShowcase";
+import CategoryShowcase from "./components/category/CategoryShowcase";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Loader from "./components/loader/Loader";
 import Transition from "./components/transition/Transition";
+import ProductPage from "./components//ProductPage/ProductPage";
 
 // Pages
 import LoginPage from "./pages/LoginPage";
@@ -102,7 +103,7 @@ function App() {
                   }
                 />
 
-                {/* Autres pages publiques */}
+                <Route path="/products/category/:categoryId" element={<ProductPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/order" element={<Order />} />
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import "./categoryShowcase.scss";
 
 const CategoryShowcase = () => {
@@ -22,7 +23,7 @@ const CategoryShowcase = () => {
 
       <div className="categories-grid">
         {categories.map((cat) => (
-          <div className="category-card" key={cat._id}>
+          <Link to={`/products/category/${cat._id}`} key={cat._id} className="category-card">
             {cat.photos[0] && (
               <img
                 src={`http://localhost:8000/uploads/${cat.photos[0]}`}
@@ -30,7 +31,7 @@ const CategoryShowcase = () => {
               />
             )}
             <p>{cat.name}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
