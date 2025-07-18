@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import Dashboard from "./pages/Dashboard";
 import "./app.scss";
 import { Helmet } from "react-helmet";
 import Navbar from "./components/Navbar/Navbar";
@@ -12,19 +15,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import Products from "./components/products/Products";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
-import { Route, Routes, useLocation } from "react-router-dom";
-import Dashbord from "./admin/Dashbord";
-import Commands from "./admin/components/Commands";
-import Ventes from "./admin/components/Ventes";
-import Articles from "./admin/components/Articles";
+import { useLocation } from "react-router-dom";
 import Order from "./components/order/Order";
 import Transition from "./components/transition/Transition";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
-import Login from "./admin/components/Login";
-import AddProduct from "./admin/components/AddProduct";
-import CommandDetails from "./admin/components/CommandDetails";
 import './i18n';
 
 const appTrans = {
@@ -45,6 +41,8 @@ const appTrans = {
   },
 };
 function App() {
+    const isAuthenticated = !!localStorage.getItem("token"); // simple check
+
   const [openNavbar, setOpenNavbar] = useState(false);
   const [category, setCategory] = useState("all");
   const [loading, setLoading] = useState(false);
@@ -141,19 +139,11 @@ function App() {
                   }
                 />
                 <Route exact path="/order" element={<Order />} />
-                  <Route path="login" element={<Login />} />
-                <Route path="/dashbordAdmin" element={<Dashbord />}>
-                  <Route element={<ProtectedRoutes/>}>
+                      <Route path="/login" element={<LoginPage />} />
+      <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
 
-                    <Route path="" element={<Commands />} />
-                    <Route path="ventes" element={<Ventes />} />
-                    <Route path="articles" element={<Articles />} />
-                    <Route path="articles/add" element={<AddProduct />} />
-                    <Route path="commands/:id" element={<CommandDetails />} />
-
-                  </Route>
                   
-                </Route>
+                
               </Routes>
             </AnimatePresence>
           </motion.div>
