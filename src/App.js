@@ -13,8 +13,7 @@ import Header from "./components/header/Header";
 import APropos from "./components/aPropos/APropos";
 import Achteurs from "./components/achteurs/Achteurs";
 import Vendeurs from "./components/vendeurs/Vendeurs";
-import Consultez from "./components/consultez/Consultez";
-import Products from "./components/products/Products";
+import CategoryShowcase from "./components/products/CategoryShowcase";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Loader from "./components/loader/Loader";
@@ -92,8 +91,8 @@ function App() {
                       <Header setOpenNavbar={setOpenNavbar} />
                       <div className="App-container" onClick={() => setOpenNavbar(false)}>
                         <APropos />
-                        <Consultez category={category} setCategory={setCategory} />
-                        <Products category={category} />
+                        <CategoryShowcase />
+                        
                         <Vendeurs />
                         <Achteurs />
                         <Contact />

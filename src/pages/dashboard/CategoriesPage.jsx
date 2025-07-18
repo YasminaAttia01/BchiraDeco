@@ -1,17 +1,22 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./adminCategories.scss";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "react-image-lightbox/style.css";
+import Lightbox from "react-image-lightbox";
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({ name: "", photos: [] });
   const [editId, setEditId] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState("");
 
   const token = localStorage.getItem("token");
 
   const fetchCategories = async () => {
-    const res = await axios.get("/api/categories");
+    const res = await axios.get("http://localhost:8000/api/categories");
     setCategories(res.data);
   };
 
@@ -35,21 +40,27 @@ const CategoriesPage = () => {
       formData.append("photos", form.photos[i]);
     }
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    };
+
     try {
       if (editId) {
-        await axios.put(`/api/categories/${editId}`, formData, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.put(`http://localhost:8000/api/categories/${editId}`, formData, config);
+        toast.success("Catégorie mise à jour !");
       } else {
-        await axios.post("/api/categories", formData, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.post("http://localhost:8000/api/categories", formData, config);
+        toast.success("Catégorie ajoutée !");
       }
+
       setForm({ name: "", photos: [] });
       setEditId(null);
       fetchCategories();
     } catch (err) {
-      alert("Erreur: " + err.response?.data?.message || err.message);
+      toast.error("Erreur : " + (err.response?.data?.message || err.message));
     }
   };
 
@@ -59,53 +70,76 @@ const CategoriesPage = () => {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("Confirmer la suppression ?")) {
-      await axios.delete(`/api/categories/${id}`, {
+    try {
+      await axios.delete(`http://localhost:8000/api/categories/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      toast.success("Catégorie supprimée");
       fetchCategories();
+    } catch (err) {
+      toast.error("Erreur lors de la suppression");
     }
   };
 
   return (
     <div className="admin-categories">
+      <ToastContainer />
       <h2>Gérer les catégories</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nom de la catégorie"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="file"
-          name="photos"
-          multiple
-          accept="image/*"
-          onChange={handleChange}
-        />
-        <button type="submit">{editId ? "Modifier" : "Ajouter"}</button>
-      </form>
+      <div className="form-section">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nom de la catégorie"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="file"
+            name="photos"
+            multiple
+            accept="image/*"
+            onChange={handleChange}
+          />
+          <button type="submit">{editId ? "Modifier" : "Ajouter"}</button>
+        </form>
+      </div>
 
-      <ul>
+      <div className="categories-list">
         {categories.map((cat) => (
-          <li key={cat._id}>
+          <div key={cat._id} className="category-card">
             <strong>{cat.name}</strong>
-            {cat.photos.map((p, i) => (
-              <img key={i} src={`/uploads/${p}`} alt={cat.name} />
-            ))}
+            <div className="image-grid">
+              {cat.photos.map((p, i) => (
+                <img
+                  key={i}
+                  src={`http://localhost:8000/uploads/${p}`}
+                  alt={cat.name}
+                  onClick={() => {
+                    setLightboxImage(`http://localhost:8000/uploads/${p}`);
+                    setLightboxOpen(true);
+                  }}
+                />
+              ))}
+            </div>
             <div className="actions">
               <button onClick={() => handleEdit(cat)}>✏️ Modifier</button>
               <button onClick={() => handleDelete(cat._id)}>🗑️ Supprimer</button>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
+
+      {lightboxOpen && (
+        <Lightbox
+          mainSrc={lightboxImage}
+          onCloseRequest={() => setLightboxOpen(false)}
+        />
+      )}
     </div>
   );
 };
 
-export default CategoriesPage
+export default CategoriesPage;

@@ -25,6 +25,12 @@
   "testimonial1": "J’ai commandé une enseigne murale en bois personnalisée pour mon salon de thé. Le rendu est tout simplement sublime : bois brut, lettrage élégant et finitions impeccables. Mes clients adorent et moi aussi !",
   "testimonial2": "Le miroir artisanal que j’ai reçu a transformé mon entrée. C’est à la fois une pièce décorative et pratique. Un service client à l’écoute et une livraison dans les délais !",
   "name_abdallah": "Abdallah ben Abdallah",
-  "name_anwer": "Anwer Belgaied"
+  "name_anwer": "Anwer Belgaied",
+"categories": {
+  "title": "Nos catégories",
+  "subtitle": "Parcourir par",
+  "span": "catégorie"
+}
+
 
 }
