@@ -23,9 +23,10 @@ import Transition from "./components/transition/Transition";
 // Pages
 import LoginPage from "./pages/LoginPage";
 import Order from "./components/order/Order";
-import DashboardLayout from "./layouts/DashboardLayout"; // à créer
-import OrdersPage from "./pages/dashboard/OrdersPage"; // à créer
-import ProductsPage from "./pages/dashboard/ProductsPage"; // à créer
+import DashboardLayout from "./layouts/DashboardLayout";
+import OrdersPage from "./pages/dashboard/OrdersPage";
+import ProductsPage from "./pages/dashboard/ProductsPage"; 
+import CategoriesPage from "./pages/dashboard/CategoriesPage";
 
 const appTrans = {
   initial: { opacity: 0 },
@@ -115,7 +116,7 @@ function App() {
                 >
                   <Route path="orders" element={<OrdersPage />} />
                   <Route path="products" element={<ProductsPage />} />
-                  {/* Ajoute ici d'autres routes internes */}
+                  <Route path="categories" element={<CategoriesPage />} />
                 </Route>
               </Routes>
             </AnimatePresence>

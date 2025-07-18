@@ -13,14 +13,14 @@ const DashboardLayout = () => {
     <div className="dashboard-layout">
       <aside className="sidebar">
         <div className="sidebar-header">
-          <h2>E-Shop</h2>
+          <h2>Bchira Deco</h2>
         </div>
         <nav className="nav-links">
-          <NavLink to="/dashboard" end className={({ isActive }) => isActive ? "active" : ""}>
-            <FaTachometerAlt /> Dashboard
+          <NavLink to="/dashboard/orders" end className={({ isActive }) => isActive ? "active" : ""}>
+            <FaTachometerAlt /> Orders
           </NavLink>
-          <NavLink to="/dashboard/orders" className={({ isActive }) => isActive ? "active" : ""}>
-            <FaClipboardList /> Orders
+          <NavLink to="/dashboard/categories" className={({ isActive }) => isActive ? "active" : ""}>
+            <FaClipboardList />  Categories
           </NavLink>
           <NavLink to="/dashboard/products" className={({ isActive }) => isActive ? "active" : ""}>
             <FaBox /> Products
