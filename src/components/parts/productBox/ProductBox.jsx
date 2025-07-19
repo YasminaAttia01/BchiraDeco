@@ -18,10 +18,15 @@ function ProductBox({ product }) {
       });
     }
   };
-
+console.log("ProductBox product:", product);
   return (
+
     <div className="product-box">
-      <img src={product.photos?.[0]} alt={product.name} />
+      <img
+                  src={`http://localhost:8000/uploads/${product.photos[0]}`}
+                  alt={product.name}
+                />
+      
       <div>
         <h3>{product.name}</h3>
         <h5>{product.colors}</h5>

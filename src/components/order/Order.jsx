@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
 import { cardActions, cardStore } from "../../context/CardContext";
 import ProductBox from "../parts/productBox/ProductBox";
@@ -6,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import Modal from "../modal/Modal";
 import { AnimatePresence, motion } from "framer-motion";
 import Transition2 from "../transition/Transtion2";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const pageTransition = {
@@ -28,10 +31,9 @@ function Order() {
   const [product, setProduct] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
-  const totalPrice = card.items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  ).toFixed(2);
+  const totalPrice = card.items
+    .reduce((sum, item) => sum + item.price * item.quantity, 0)
+    .toFixed(2);
 
   const handleOrder = (e) => {
     e.preventDefault();
@@ -47,16 +49,24 @@ function Order() {
       )
       .then((res) => {
         if (res.data.status === "success") {
-          toast.success("Commande envoyée avec succès !");
+          toast.success("✅ Commande envoyée avec succès !", {
+            position: "bottom-center",
+            className: "toast-above-button",
+          });
           console.log("🛒 Cart data from backend:", res.data);
-
           dispatchCard(cardActions.clearCard());
         } else {
-          toast.error(res.data.message);
+          toast.error(res.data.message || "Erreur lors de la commande.", {
+            position: "bottom-center",
+            className: "toast-above-button",
+          });
         }
       })
       .catch((err) => {
-        toast.error("Erreur lors de la commande !");
+        toast.error("❌ Erreur lors de la commande !", {
+          position: "bottom-center",
+          className: "toast-above-button",
+        });
       });
   };
 
@@ -119,6 +129,7 @@ function Order() {
             </p>
             <hr />
           </div>
+
           <div className="nameInput">
             <label htmlFor="name">Nom</label>
             <input
@@ -128,6 +139,7 @@ function Order() {
               onChange={(e) => setUser({ ...user, name: e.target.value })}
             />
           </div>
+
           <div className="lastnameInput">
             <label htmlFor="lastname">Prénom</label>
             <input
@@ -137,6 +149,7 @@ function Order() {
               onChange={(e) => setUser({ ...user, lastName: e.target.value })}
             />
           </div>
+
           <div className="emailInput">
             <label htmlFor="email">Email</label>
             <input
@@ -146,6 +159,7 @@ function Order() {
               onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
           </div>
+
           <div className="phoneInput">
             <label htmlFor="phone">Téléphone</label>
             <input
@@ -155,6 +169,7 @@ function Order() {
               onChange={(e) => setUser({ ...user, phone: e.target.value })}
             />
           </div>
+
           <div className="addressInput">
             <label htmlFor="address">Adresse</label>
             <input
@@ -164,6 +179,7 @@ function Order() {
               onChange={(e) => setUser({ ...user, address: e.target.value })}
             />
           </div>
+
           <div className="formvalidation">
             <hr />
             <div>
@@ -176,12 +192,28 @@ function Order() {
               </button>
               <button
                 type="button"
-                onClick={() => dispatchCard(cardActions.clearCard())}
+                onClick={() => {
+                  dispatchCard(cardActions.clearCard());
+                  toast.info("🧺 Panier vidé avec succès !", {
+                    position: "bottom-center",
+                    className: "toast-above-button",
+                  });
+                }}
                 className="btn-cancel"
               >
                 ❌ Annuler la commande
               </button>
             </div>
+
+            {/* Toast container near buttons */}
+            <ToastContainer
+              autoClose={3000}
+              hideProgressBar
+              closeOnClick
+              pauseOnHover
+              draggable
+              theme="colored"
+            />
           </div>
         </form>
       </motion.div>

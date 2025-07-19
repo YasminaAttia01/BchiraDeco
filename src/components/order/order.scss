@@ -145,4 +145,27 @@
       }
     }
   }
+
+  .toast-above-button {
+    position: absolute !important;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    z-index: 9999;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .toast-above-button.toastify__toast--error {
+    background-color: #dc3545;
+  }
+
+  .toast-above-button.toastify__toast--info {
+    background-color: #17a2b8;
+  }
+
 }
