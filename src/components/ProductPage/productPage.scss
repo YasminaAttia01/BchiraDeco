@@ -85,6 +85,50 @@
         }
     }
 
+    .cart-icon {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background-color: white;
+        padding: 12px;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 26px;
+        z-index: 999;
+        color: #f39c12;
+        animation: shine 2s infinite alternate;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.2);
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: red;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+    }
+
+    @keyframes shine {
+        from {
+            filter: drop-shadow(0 0 2px #f39c12);
+        }
+
+        to {
+            filter: drop-shadow(0 0 10px #f1c40f);
+        }
+    }
+
+
 }
 
 /* Sets Section */
@@ -168,4 +212,30 @@
             }
         }
     }
+
+    .product-footer {
+        padding: 1rem;
+        border-top: 1px solid #eee;
+        display: flex;
+        justify-content: center;
+
+        .add-to-cart-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #333;
+            }
+        }
+    }
+
 }

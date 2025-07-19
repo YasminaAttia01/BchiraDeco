@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Modal from "../modal/Modal";
 import { AnimatePresence, motion } from "framer-motion";
 import Transition2 from "../transition/Transtion2";
-import Footer from "../footer/Footer";
-import axiosConfig from "../../utils/AxiosConfig";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const pageTransition = {
   initial: {
@@ -21,42 +20,60 @@ const pageTransition = {
     },
   },
 };
+
 function Order() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState({});
   const { card, dispatchCard } = useContext(cardStore);
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
-  const totalPrice = card.reduce((a, b) => a + b.price, 0);
-  const hundleOrder = (e) => {
+  const totalPrice = card.items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  ).toFixed(2);
+
+  const handleOrder = (e) => {
     e.preventDefault();
 
-    axiosConfig
-      .post("/orders", { totalPrice, user, products: card })
+    axios
+      .post(
+        "http://localhost:8000/api/orders",
+        {
+          clientInfo: user,
+          totalPrice: parseFloat(totalPrice),
+        },
+        { withCredentials: true }
+      )
       .then((res) => {
         if (res.data.status === "success") {
-          toast.success("commande envoye avec succes");
-          var timer = setTimeout(() => {
-            setOpenModal(false);
-            dispatchCard(cardActions.clearCard());
-          }, 1500);
+          toast.success("Commande envoyée avec succès !");
+          console.log("🛒 Cart data from backend:", res.data);
+
+          dispatchCard(cardActions.clearCard());
         } else {
           toast.error(res.data.message);
         }
       })
-      .catch((err) =>{
-        if(err.response.data.message.includes('Order')){
-            toast.error('il faut verifier vos cordonner');
-            
-        }
-        })
+      .catch((err) => {
+        toast.error("Erreur lors de la commande !");
+      });
   };
+
   useEffect(() => {
-    if (card.length === 0 && !openModal) {
-      
-    }
-  }, [card.length, navigate, openModal]);
+    const fetchCart = async () => {
+      try {
+        const res = await axios.get("http://localhost:8000/api/cart", {
+          withCredentials: true,
+        });
+        dispatchCard(cardActions.setCart(res.data.cart));
+      } catch (err) {
+        console.error("Erreur chargement panier :", err);
+      }
+    };
+
+    fetchCart();
+  }, []);
 
   return (
     <Transition2>
@@ -64,12 +81,15 @@ function Order() {
         initial="initial"
         animate="animate"
         variants={pageTransition}
-        className="order-container"
+        className="order-container order-theme"
       >
         <div className="order">
-          <h2>Panier d'achat</h2>
-          <p>Vous avez {card.length} article(s) dans votre panier.           <p className="total">Total : {totalPrice} DT</p></p>
-          {card.map((item) => (
+          <h2>🛒 Panier d'achat</h2>
+          <p>
+            Vous avez {card.items.length} article(s) dans votre panier.
+            <span className="total"> Total : {totalPrice} DT</span>
+          </p>
+          {card.items.map((item) => (
             <ProductBox
               key={item._id}
               product={item}
@@ -78,91 +98,93 @@ function Order() {
             />
           ))}
 
-
           <AnimatePresence>
-            {" "}
-            {openModal ? (
+            {openModal && (
               <Modal
                 openModal={openModal}
                 product={product}
                 setOpenModal={setOpenModal}
               />
-            ) : null}
+            )}
           </AnimatePresence>
         </div>
-        <form>
+
+        <form className="order-form">
           <div className="formHead">
-            <h3>Cher client,</h3>
+            <h3>📋 Coordonnées</h3>
             <p>
-              Nous vous remercions de nous avoir fourni vos coordonnées pour le
-              suivi de votre commande. Si vous n'avez pas encore reçu de retour
-              de notre part après une semaine, veuillez nous envoyer un mail à
-              l'adresse hello@gmail.com.
+              Merci de remplir vos coordonnées pour le suivi de la commande.
+              Si aucun retour après une semaine, contactez-nous :
+              belldeco27@gmail.com
             </p>
             <hr />
           </div>
           <div className="nameInput">
-            {" "}
-            <label htmlFor="">Nom</label>
+            <label htmlFor="name">Nom</label>
             <input
               type="text"
-              name="name"
+              id="name"
+              placeholder="Votre nom"
               onChange={(e) => setUser({ ...user, name: e.target.value })}
             />
           </div>
           <div className="lastnameInput">
-            {" "}
-            <label htmlFor="">Prenom</label>
+            <label htmlFor="lastname">Prénom</label>
             <input
               type="text"
-              name="name"
-              onChange={(e) => setUser({ ...user, lastNAme: e.target.value })}
+              id="lastname"
+              placeholder="Votre prénom"
+              onChange={(e) => setUser({ ...user, lastName: e.target.value })}
             />
           </div>
           <div className="emailInput">
-            <label htmlFor="">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
-              name="email"
+              id="email"
+              placeholder="email@exemple.com"
               onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
           </div>
           <div className="phoneInput">
-            {" "}
-            <label htmlFor="">Telephone</label>
+            <label htmlFor="phone">Téléphone</label>
             <input
-              type="number"
-              name="tel"
+              type="tel"
+              id="phone"
+              placeholder="Votre numéro de téléphone"
               onChange={(e) => setUser({ ...user, phone: e.target.value })}
             />
           </div>
           <div className="addressInput">
-            <label htmlFor="">Adresse</label>
+            <label htmlFor="address">Adresse</label>
             <input
               type="text"
-              name="adress"
+              id="address"
+              placeholder="Votre adresse complète"
               onChange={(e) => setUser({ ...user, address: e.target.value })}
             />
           </div>
           <div className="formvalidation">
-          <hr />
-          <div>
-            <button type="submit" onClick={hundleOrder}>
-              passer l'order
-            </button>
-            <button
-              type="submit"
-              onClick={(e) =>{ e.preventDefault(); dispatchCard(cardActions.clearCard())}}
-              style={{ background: "gray" }}
-            >
-              annuler la commande
-            </button>
+            <hr />
+            <div>
+              <button
+                type="submit"
+                onClick={handleOrder}
+                className="btn-order"
+              >
+                ✅ Passer la commande
+              </button>
+              <button
+                type="button"
+                onClick={() => dispatchCard(cardActions.clearCard())}
+                className="btn-cancel"
+              >
+                ❌ Annuler la commande
+              </button>
+            </div>
           </div>
-        </div>
         </form>
-        
       </motion.div>
-      {/* <Footer /> */}
     </Transition2>
   );
 }
